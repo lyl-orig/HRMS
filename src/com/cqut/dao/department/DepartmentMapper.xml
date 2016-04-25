@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
+<mapper namespace="com.cqut.dao.department.DepartmentDao">
+    <resultMap id="DepartmentMap" type="com.cqut.entity.Department">
+        <result property="EId" column="EId"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="organizationId" column="organizationId"/>    
+    </resultMap>
+  
+	<insert id="insertDepartment" parameterType ="com.cqut.entity.Department">
+		
+		insert into department(name,code,organizationId)
+        values(#{name},#{code},#{organizationId})  
+	
+	</insert>
+   
+</mapper>

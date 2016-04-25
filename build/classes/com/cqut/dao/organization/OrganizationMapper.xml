@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
+<mapper namespace="com.cqut.dao.organization.OrganizationDao">
+    <resultMap id="OrganizationMap" type="com.cqut.entity.Organization">
+        <result property="EId" column="EId"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+    </resultMap>
+
+    <!-- 这里的id必须和OrganizationMapper接口中的接口方法名相同，这些sql语句就是实现接口中的方法。-->
+  
+	<insert id="insertOrganization" parameterType="com.cqut.entity.Organization">
+		insert into organization(name,code)
+        values(#{name},#{code})  
+	</insert>
+   
+    <select id="getOrganizations"  parameterType="String" resultMap="OrganizationMap">
+    	select * from organization where 1=1
+    	<if test="where != ''">
+            and ${where}
+        </if>
+    </select>
+</mapper>

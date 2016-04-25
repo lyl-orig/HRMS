@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 扫描controller（controller层注入） -->
+    <context:component-scan base-package="com.cqut.controller"/>
+
+    <!-- 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring MVC为@Controllers分发请求所必须的 -->
+    <!-- 可以指定自己定义的validator -->
+    <mvc:annotation-driven/>
+    <!--对进入DispatcherServlet的URL进行筛查，如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，如果不是静态资源的请求，才由DispatcherServlet继续处理。-->
+    <mvc:default-servlet-handler/>
+
+    <bean id="exceptionHandler" class="com.cqut.exception.ExceptionHandler"/>
+
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.cqut.interceptor.IPInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- <mvc:interceptors>
+         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+     </mvc:interceptors>
+
+     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+         <property name="defaultLocale" value="zh_CN"/>
+     </bean>-->
+
+    <!-- 支持返回json(避免IE在ajax请求时，返回json出现下载 ) -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/plain;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 支持返回json -->
+
+    <!-- 对模型视图添加前后缀 -->
+    <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"-->
+    <!--p:prefix="/" p:suffix=".jsp"/>-->
+
+    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="suffix" value=".html"/>
+        <property name="prefix" value=""/>
+        <property name="cache" value="true"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+    </bean>
+    <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/"/>
+        <property name="configLocation" value="classpath:velocity.properties"/>
+    </bean>
+
+
+    <!-- 配置springMVC处理上传文件的信息 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxUploadSize" value="104857600"/>
+        <property name="maxInMemorySize" value="40960"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
+<mapper namespace="com.cqut.dao.employee.EmployeeDao">
+    <resultMap id="EmployeeMap" type="com.cqut.entity.Employee">
+        <result property="EId" column="EId"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+    <!-- 这里的id必须和EmployeeMapper接口中的接口方法名相同，这些sql语句就是实现接口中的方法。-->
+  
+	<insert id="insertEmployee" parameterType="com.cqut.entity.Employee">
+		insert into employee(name,password)
+        values(#{name},#{password})  
+	</insert>
+   
+</mapper>

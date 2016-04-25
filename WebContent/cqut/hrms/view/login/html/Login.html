@@ -1,0 +1,50 @@
+
+<div class="row">
+	<div class="headLogo">
+	    大江企业-人力资源管理系统
+	</div>
+</div>
+<div class="content">
+	<div class="left">
+		<img src="imgs/logo4.jpg" width="400" height="360">
+	</div>
+
+	<div class="loginRight">
+		<form class="form-horizontal" role="form" name="form">
+			<fieldset style="margin-top: -35px;">
+				<div class="input-group">
+				   <p class="title">用户登录/LOGIN</p>
+				</div>
+				<hr />
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user" title="用户名"></i></span> 
+					<input type="text"
+						class="form-control" required placeholder="请输入用户名"
+						ng-model="name">
+				</div>
+				<br>
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-lock" title="单位"></i></span>
+					 <input type="password"
+						class="form-control" required placeholder="请输入密码"
+						ng-model="password">
+				</div>
+</br>
+
+			</fieldset>
+			
+			<div class="login">
+				<button type="button" role="button" class="btn btn-primary"
+					ng-click="reset()">重置</button>
+				<button type="button" style="margin-left: 10px" role="button"
+					class="btn btn-primary" ng-click="login()">登录</button>
+			</div>
+			</br>
+			<alert ng-show="showError" type="'danger'" close="showError=false">用户名或密码错误</alert>
+			<alert ng-show="showEmpty" type="'danger'" close="showEmpty=false">用户名或密码不能为空</alert>
+		</form>
+	</div>
+
+</div>

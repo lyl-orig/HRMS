@@ -1,0 +1,32 @@
+<div class="navbar">
+    <div class="navbar-inverse">
+        <div class="row" style="background-color: #3787c8;">
+            <div class="col-md-3">
+                <div class="navbar-header">
+                    <a class="navbar-brand">
+                    	<span class="glyphicon glyphicon-user"></span>
+                    	<span>人力资源管理系统</span>
+					</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+	            <ul id="systemModules" class="nav navbar-nav pull-left"> 
+	               <li><a href="javaScript:void">个人主页</a></li>  
+                   <li><a href="javaScript:void">业务管理</a></li>
+                   <li><a href="javaScript:void">系统管理</a></li>   
+				</ul>
+				
+            </div>
+            <div class="col-md-3">
+                <ul class="nav navbar-nav pull-right">
+					<li>
+                        <a>欢迎您：{{name}}</a> 
+                    </li>          
+                    <li>
+                        <a><img src="imgs/exit.png" ng-click="loginOut()"/></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

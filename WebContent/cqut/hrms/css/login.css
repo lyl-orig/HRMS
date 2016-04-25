@@ -1,0 +1,205 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.navbar-inverse .navbar-brand{
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+}
+.login_bg{
+	
+	
+}
+hr {
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+}
+.header{
+	background-color: #51a351;
+	background:linear-gradient(45deg, #050f06 0%,#005DAF 100%);
+	background: -moz-linear-gradient(45deg, #050f06 0%, #005DAF 100%);
+	background: -o-linear-gradient(45deg, #050f06 0%,#005DAF 100%);
+	background: -ms-linear-gradient(45deg, #050f06 0%,#005DAF 100%);
+}
+
+.logo{
+	padding: 10px 0;
+	float: none;
+	margin: 0;
+	position: relative;
+	
+}
+
+.headLogo{
+	margin:0 auto;
+	width: 100%;
+	height: 200px;
+	/* background-color: #428bca; */
+	line-height:150px;
+	color:#428bca;
+	font-size:30px;
+	text-align:center;
+	background: -webkit-linear-gradient(bottom, #D5D5FF , white); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom,#D5D5FF , white); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom,#D5D5FF , white); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom, #D5D5FF , white); /* 标准的语法（必须放在最后） */
+}
+.row{
+	
+}
+.content{
+	width:100%;
+	position: relative;
+	margin: 20px auto 0px;
+	border-radius:4px;
+	overflow: auto;
+	zoom:1;
+	height: 368px;
+}
+
+ .left{
+	position: absolute;
+	margin-left:250px;
+	/* border-right: 1px solid #e5e5e5; */
+} 
+
+.loginRight{
+	width: 360px;
+	height:330px;
+	position: absolute;
+	border:1px solid #e5e5e5;
+	-webkit-box-shadow: 3px 3px 10px #9edeff;
+	box-shadow: 3px 3px 10px #9edeff;
+	float:right;
+	left: 800px;
+	padding: 50px 50px 0px 50px;
+}
+.login{
+	margin-top:-10px;
+	margin-left: 135px;
+}
+.loginPanel{
+	margin-top: 100px;
+}
+.title{
+	width: 240px;
+	height: 50px;
+	font-size:20px;
+	color:#428bca;
+    line-height: 50px;
+}
+
+.u-help{
+	position: relative;
+	top:-5px; 
+	display: none;
+}
+
+.u-errormessage{
+	color: #da4f49;
+}
+
+.logo-link{
+	display: inline-block;
+	padding: 0px 10px;
+	border-right: 1px solid #e5e5e5;
+}
+
+.welcome{
+	font-size: 26px;
+	font-family: 'Microsoft Yahei';
+	color: #fff;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.noborderpanel{
+	 border-left: 0;
+	 border-right: 0; 
+	 border-bottom: 0;
+	 margin-bottom: 0 !important;
+}
+
+.treeStyle{
+	margin-left: -20px;
+}
+
+.nolrborderpanel{
+	border-left: 0;
+	 border-right: 0;
+}
+
+.rowddd{
+	height: 15px;
+}
+
+.noBottom{
+	margin-bottom: 0;
+}
+
+.operateButtonRow{
+	margin-bottom: 15px;
+}
+
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.testCss{
+	background-color: #ddd !important;
+}
+
+.has-error {
+  color: #b94a48;
+}
+
+.legend{
+	color: rgb(50, 106, 153);
+}
+
+div .head1
+{
+	border-bottom: 1px solid #ddd; 
+	padding-bottom: 10px; 
+	padding-top: 5px;
+}
+
+div .head2
+{
+	border-bottom: 1px solid #ddd; 
+	padding-top: 5px; 
+	background-color: #f9f9f9;"
+}
+
+div .head3{
+	padding-top: 5px;
+}
+.pagination
+{
+	display: inline-block;
+	padding-left: 0;
+	margin: 0;
+	border-radius: 0;
+} 
+
+.scroll-css{
+	width:800px;
+  	overflow-x:auto;
+	overflow-y:none;  
+}

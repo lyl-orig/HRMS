@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 时间滚动输出 level为 DEBUG 日志 -->
+    <appender name="file—debug"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY </onMismatch>
+        </filter>
+        <!--每天生成一个日志文件，保存30天的日志文件。-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>C:/logs/debug.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 时间滚动输出 level大于 INFO 日志 -->
+    <appender name="file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>C:/logs/log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 时间滚动输出 level为 ERROR 日志 -->
+    <appender name="file—error"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY </onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>C:/logs/error.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 特定过滤含有某字符串的日志 -->
+<!--    <appender name="file-str"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>message.contains("str")</expression>
+            </evaluator>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>C:/logs/contains.%d{yyyy-MM-dd}.log
+            </FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern_static_resource>%date [%thread] %-5level %logger{80} - %msg%n</pattern_static_resource>
+        </encoder>
+    </appender>-->
+
+    <!-- 数据库输出 -->
+<!--    <appender name="db" class="ch.qos.logback.classic.db.DBAppender">
+        <connectionSource
+                class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+            <driverClass>com.mysql.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://host_name:3306/datebase_name</url>
+            <user>username</user>
+            <password>password</password>
+        </connectionSource>
+    </appender>-->
+
+    <logger name="com.qunar.fresh">
+        <level value="DEBUG" />
+    </logger>
+    <!--不向上级传递打印信息-->
+    <logger name="com.qunar.example" level="DEBUG" additivity="false">
+        <appender-ref ref="stdout" />
+    </logger>
+    <root level="DEBUG">
+        <appender-ref ref="stdout" />
+       <!-- <appender-ref ref="file" />
+        <appender-ref ref="file—debug" />
+        <appender-ref ref="file—error" />-->
+        <!--<appender-ref ref="file-str" />-->
+        <!--<appender-ref ref="db" />-->
+    </root>
+
+</configuration>

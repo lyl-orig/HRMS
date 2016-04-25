@@ -1,0 +1,57 @@
+<div ng-controller="employeeDisplayController">
+<ddataload show="propertiesLoad"></ddataload>
+<ddataload show="propertiesValueLoad"></ddataload>
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="col-md-12 form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" value="取消"
+						ng-click="cancelOperate()" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="name">会员名称 </label>
+				<div class="col-md-10">
+					<span>{{member.name}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="password">密码 </label>
+				<div class="col-md-10">
+					<span>{{member.password}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="sex">性别 </label>
+				<div class="col-md-10">
+					<span>{{member.sex}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="phone">电话 </label>
+				<div class="col-md-10">
+					<span>{{member.phone}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="Email">电子邮件 </label>
+				<div class="col-md-10">
+					<span>{{member.email}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="remark">备注 </label>
+				<div class="col-md-10">
+					<span>{{member.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="operateDate">操作日期 </label>
+				<div class="col-md-10">
+					<span>{{member.operateDate}}</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
