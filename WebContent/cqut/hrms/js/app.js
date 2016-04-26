@@ -30,8 +30,11 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 		views : {
 			"top@main" : angularAMD.route({
 				templateUrl : 'view/main/html/Header.html',
+				css:['../common/common.css'],
 				controller:'HeaderController',
-				controllerUrl:['view/main/js/HeaderController.js']//必需是数组
+				controllerUrl:['view/main/js/HeaderController.js',
+				               'view/module/js/ModuleService.js'
+				               ]//必需是数组
 			}),
 			"menu@main" : angularAMD.route({
 				templateUrl : 'view/main/html/Menu.html',
@@ -125,7 +128,9 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 		views : {
 			"content@main":angularAMD.route({
 				templateUrl : 'view/department/html/DepartmentList.html',
-				controllerUrl : ['view/department/js/DepartmentList.js']
+				controllerUrl : ['view/department/js/DepartmentList.js',
+				                 'view/organization/js/OrganizationService.js'
+				                 ]
 			})
 		}
 	  }))
@@ -137,6 +142,7 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 				"content@main":angularAMD.route({
 					templateUrl : 'view/department/html/DepartmentList.html',
 					controllerUrl : ['view/department/js/DepartmentList.js',
+					                 'view/organization/js/OrganizationService.js',
 					                 'view/department/js/DepartmentService.js']
 				})
 			}
@@ -148,11 +154,12 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 			"content@main":angularAMD.route({
 				templateUrl : 'view/department/html/DepartmentForm.html',
 				controllerUrl : ['view/department/js/DepartmentForm.js',
-				                 'view/department/js/DepartmentService.js']
+				                 'view/department/js/DepartmentService.js',
+				                 'view/organization/js/OrganizationService.js']
 			})
 		}
 	  }))
-//	  =================================system========================
+//	  =================================module========================
 		  .state('main.list.module',angularAMD.route({
 				url : '/module',
 				views : {
@@ -167,7 +174,8 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 				views : {
 					"content@main":angularAMD.route({
 						templateUrl : 'view/module/html/ModuleList.html',
-						controllerUrl : ['view/module/js/ModuleList.js','view/module/js/ModuleService.js']
+						controllerUrl : ['view/module/js/ModuleList.js',
+						                 'view/module/js/ModuleService.js']
 					})
 				}
 			  }))
@@ -182,6 +190,37 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 				})
 			}
 		  }))
+  //	  =================================point 功能点========================
+  .state('main.list.point',angularAMD.route({
+		url : '/point',
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/point/html/PointList.html'
+			})
+		}
+	  }))
+  .state('main.list.point.list',angularAMD.route({
+		url : '/list',
+		css:[],
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/point/html/PointList.html',
+				controllerUrl : ['view/point/js/PointList.js',
+				                 'view/point/js/PointService.js']
+			})
+		}
+	  }))
+  .state('main.list.point.form',angularAMD.route({
+	url : '/form/:operate',
+	css:[],
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/point/html/PointForm.html',
+			controllerUrl : ['view/point/js/PointForm.js',
+			                 'view/point/js/PointService.js']
+		})
+	}
+  }))
 /*	  //图书列表
 	  .state('main.list.bookslist',angularAMD.route({
 		url : '/books',

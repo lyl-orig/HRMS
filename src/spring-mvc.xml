@@ -62,7 +62,7 @@
     <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"-->
     <!--p:prefix="/" p:suffix=".jsp"/>-->
 
-    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+<!--     <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
         <property name="suffix" value=".html"/>
         <property name="prefix" value=""/>
         <property name="cache" value="true"/>
@@ -71,7 +71,7 @@
     <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="/"/>
         <property name="configLocation" value="classpath:velocity.properties"/>
-    </bean>
+    </bean> -->
 
 
     <!-- 配置springMVC处理上传文件的信息 -->

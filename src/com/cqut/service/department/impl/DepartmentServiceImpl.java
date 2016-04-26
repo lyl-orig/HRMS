@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cqut.dao.department.DepartmentDao;
 import com.cqut.entity.Department;
@@ -16,6 +17,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 	@Resource
 	private DepartmentDao departmentDao;
 	
+	@Transactional
 	@Override
 	public int insertDepartment(Department department) {
 		

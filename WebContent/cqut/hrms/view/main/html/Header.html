@@ -11,9 +11,11 @@
             </div>
             <div class="col-md-6">
 	            <ul id="systemModules" class="nav navbar-nav pull-left"> 
-	               <li><a href="javaScript:void">个人主页</a></li>  
-                   <li><a href="javaScript:void">业务管理</a></li>
-                   <li><a href="javaScript:void">系统管理</a></li>   
+	           	   <li ng-repeat="module in modules" 
+	          	    	ng-class="{selectedModule:isSelected == $index}"
+	          	        ng-click="loadSystem(module.EId,$index)">
+                        <a>{{module.name}}</a>
+                    </li>
 				</ul>
 				
             </div>

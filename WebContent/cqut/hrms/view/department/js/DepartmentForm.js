@@ -1,16 +1,27 @@
 angular.module('departmentModule', [])
-.controller('departmentFormController',['$rootScope','$scope','$state','$stateParams','DepartmentService',
+.controller('departmentFormController',['$rootScope','$scope','$state','$stateParams','DepartmentService','OrganizationService',
           
-    function($rootScope,$scope,$state,$stateParams,DepartmentService){
+    function($rootScope,$scope,$state,$stateParams,DepartmentService,OrganizationService){
 	
-	$scope.selectItem=function(){
-		alert($scope.organization.id);
+	
+	  $scope.selectItem=function(){
+		alert($scope.department.organizationId);
 	  }
-    $scope.organization = [{
-        id: 1,
-        name: '大江工业'
-    }];
-    
+	   //加载全部组织机构
+	     OrganizationService.getOrganizations(sucesscb,errorcb);
+		 
+		 function sucesscb(data)
+			{
+			    //alert(data);
+			    $scope.organization=data;
+			    
+				console.log($scope.organization);
+				//$state.go('main.list.organization.list');
+			}
+			function errorcb()
+			{
+				alert('获取机构列表失败!');
+			}	
     $scope.showSaveAndAddButton = $stateParams.operate == 'add' ?true:false;
 	
 	$scope.operate = $stateParams.operate;
@@ -18,8 +29,10 @@ angular.module('departmentModule', [])
 	$scope.saveDepartment = function(department){
 		if($scope.operate=='add')
 		{
-		  $scope.addDepartment(department);	
+		  $scope.addDepartment(department);
+		  
 		}else if($scope.operate=='edit'){
+			
 			$scope.updateDepartment(department);
 		}
 	}

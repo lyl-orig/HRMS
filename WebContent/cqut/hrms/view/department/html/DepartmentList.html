@@ -1,7 +1,7 @@
 <div ng-controller="departmentListController">
 	 <div class="row" style="margin-top: 10px;margin-bottom: 10px">
 	    <div class="col-md-3">
-		    <select class="form-control" ng-model="model.id" ng-options="m.id as m.productName for m in model" ng-change="selectItem()">
+		    <select class="form-control" ng-model="organization.EId" ng-options="o.EId as o.name for o in organization" ng-change="selectItem()">
 	    		<option value="">--- 请选择组织机构 ---</option>
 			</select>
 	    </div>

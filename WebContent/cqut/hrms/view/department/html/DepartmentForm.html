@@ -30,7 +30,7 @@
 			<div class="form-group col-md-6">
 				<label class="col-md-3 control-label" for="organizationId"> 所属机构: </label>
 				<div class="col-md-9">
-				    <select class="form-control" ng-model="organization.id"  ng-options="o.id as o.name for o in organization" ng-change="selectItem()">
+				    <select class="form-control" ng-model="department.organizationId"  ng-options="o.EId as o.name for o in organization" ng-change="selectItem()">
 				    	<option value="">--- 请选择组织机构 ---</option>
 				    </select>
 				</div>
