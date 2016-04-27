@@ -33,12 +33,17 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 				css:['../common/common.css'],
 				controller:'HeaderController',
 				controllerUrl:['view/main/js/HeaderController.js',
-				               'view/module/js/ModuleService.js'
+				               'view/module/js/ModuleService.js',
+				               'view/node/js/NodeService.js'
 				               ]//必需是数组
 			}),
 			"menu@main" : angularAMD.route({
+				controller:'HeaderController',
 				templateUrl : 'view/main/html/Menu.html',
-				controllerUrl:[]//必需是数组
+				controllerUrl:['view/main/js/HeaderController.js',
+				               'view/module/js/ModuleService.js',
+				               'view/node/js/NodeService.js'
+				               ]//必需是数组
 			}),
 			"content@main":angularAMD.route({
 				templateUrl : 'view/main/html/Content.html',
@@ -190,34 +195,34 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 				})
 			}
 		  }))
-  //	  =================================point 功能点========================
-  .state('main.list.point',angularAMD.route({
-		url : '/point',
+  //	  =================================Node 功能点========================
+  .state('main.list.node',angularAMD.route({
+		url : '/node',
 		views : {
 			"content@main":angularAMD.route({
-				templateUrl : 'view/point/html/PointList.html'
+				templateUrl : 'view/node/html/NodeList.html'
 			})
 		}
 	  }))
-  .state('main.list.point.list',angularAMD.route({
+  .state('main.list.node.list',angularAMD.route({
 		url : '/list',
 		css:[],
 		views : {
 			"content@main":angularAMD.route({
-				templateUrl : 'view/point/html/PointList.html',
-				controllerUrl : ['view/point/js/PointList.js',
-				                 'view/point/js/PointService.js']
+				templateUrl : 'view/node/html/NodeList.html',
+				controllerUrl : ['view/node/js/NodeList.js',
+				                 'view/node/js/NodeService.js']
 			})
 		}
 	  }))
-  .state('main.list.point.form',angularAMD.route({
-	url : '/form/:operate',
+  .state('main.list.node.form',angularAMD.route({
+	url : '/form/:operate/:nodeId',
 	css:[],
 	views : {
 		"content@main":angularAMD.route({
-			templateUrl : 'view/point/html/PointForm.html',
-			controllerUrl : ['view/point/js/PointForm.js',
-			                 'view/point/js/PointService.js']
+			templateUrl : 'view/node/html/NodeForm.html',
+			controllerUrl : ['view/node/js/NodeForm.js',
+			                 'view/node/js/NodeService.js']
 		})
 	}
   }))

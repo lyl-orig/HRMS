@@ -1,5 +1,11 @@
-    <ul class="main-nav nav nav-tabs nav-stacked">
-        <li>
+ <ul class="main-nav nav nav-tabs nav-stacked">
+		
+		<li ng-repeat="node in nodes">
+		    <a ui-sref={{node.mapurl}}>
+		         {{node.name}}
+		    </a>
+		 </li>
+        <li >
             <a ui-sref="main.list.employee.list">
                 <i class="glyphicon glyphicon-user"></i>
                                                    个人信息
@@ -26,7 +32,7 @@
         </li>
 
         <li>
-            <a ui-sref="main.list.point.list">
+            <a ui-sref="main.list.node.list">
                 <i class="glyphicon glyphicon-th-list"></i>
               功能管理
             </a>

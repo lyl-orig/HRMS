@@ -1,12 +1,11 @@
 define(['app'], function (app) 
 {
-	app.controller('HeaderController',['$rootScope','$state','$scope','LoginService','ModuleService',
-	function($rootScope,$state,$scope,LoginService,ModuleService){
+	app.controller('HeaderController',['$rootScope','$state','$scope','LoginService','ModuleService','NodeService',
+	function($rootScope,$state,$scope,LoginService,ModuleService,NodeService){
 		
 		 ModuleService.getModules(sucesscb,errorcb);
 		 function sucesscb(data)
 		 {
-			 console.log(data);
 			 $scope.modules=data;
 		 }
 		 function errorcb(){
@@ -15,8 +14,19 @@ define(['app'], function (app)
 		 $scope.isSelected = 0;
 		
 		 $scope.loadSystem=function(systemModuleId,index){
-			 $scope.isSelected=index;
-			 alert(systemModuleId+","+index)
+			 //alert(systemModuleId);
+			 $rootScope.nodes=[
+			               {name:'个人信息',mapurl:'main.list.personal.list'},
+			               ]
+			 NodeService.getNodesByModuleId(systemModuleId,sucesscb,errorcb);
+			 
+			 function sucesscb(data){
+				 
+				 $rootScope.nodes=data;
+			 }
+			 function errorcb(){
+				 alert("加载失败");
+			 }
 		 }
 		var loginer=JSON.parse(sessionStorage.getItem("loginer"));
 		$scope.name=loginer.name;
