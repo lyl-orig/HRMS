@@ -1,0 +1,21 @@
+<div ng-controller="nodeListController">
+	 <div class="row" style="margin-top: 10px;margin-bottom: 10px">
+	    <div class="col-md-3">
+		    <select class="form-control" ng-model="node.moduleId" ng-options="m.EId as m.name for m in module" ng-change="selectItem()">
+	    		<option value="">--- 选择模块 ---</option>
+			</select>
+	    </div>
+         <div class="col-md-3">
+         		<input type="text"  class="form-control" ng-model="name"/>		
+         </div>
+         <div class="col-md-5">
+                <button type="button" class="btn btn-info" ng-click="searchNodeByName()">查询</button>
+         		<button type="button" class="btn btn-info" ng-click="insertNode()">新增</button>
+         		<button type="button" class="btn btn-info" ng-click="refreshGrid()">刷新</button>
+         </div>
+    </div>
+    <div class="row">
+     	<div class="gridStyle" ng-grid="gridOptions" style="height: 530px;width: 1138px"></div>
+    </div> 
+    
+</div>

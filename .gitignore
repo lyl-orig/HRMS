@@ -1,0 +1,5 @@
+# eclipse ignore
+.settings/
+.idea
+.classpath
+.project

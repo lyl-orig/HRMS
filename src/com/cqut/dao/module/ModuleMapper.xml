@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqut.dao.module.ModuleDao">
+    <resultMap type="com.cqut.entity.Module" id="ModuleMap">
+    	<result property="EId" column="EId"/>
+    	<result property="name" column="name"/>
+    	<result property="remark" column="remark"/>
+    </resultMap>
+    
+    <insert id="insertModule" parameterType="com.cqut.entity.Module">
+        insert into module(name,remark)
+        values(#{name},#{remark})
+    </insert>
+    
+    <update id="updateModule" parameterType="com.cqut.entity.Module"> 
+    	update module
+    	<set>
+    	  	name=#{name},remark=#{remark}
+    	</set>
+    	<where>
+    	 	EId=#{EId}
+    	</where>
+    </update>
+    
+    <delete id="deleteModule" parameterType="com.cqut.entity.Module">
+    	delete from module where EId=#{EId}
+    </delete>
+    
+    <select id="getModules"  parameterType="String" resultMap="ModuleMap">
+     	select * from module where 1=1
+        <if test="where != ''">
+            and ${where}
+        </if>
+    </select>
+</mapper>

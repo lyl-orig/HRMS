@@ -1,0 +1,31 @@
+<div ng-controller="moduleFormController">
+	<div class="row">
+		<form class="col-md-12 form-horizontal" name="moduleForm" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-success col-md-offset-1" type="button"
+						value="保存" type="submit" ng-click="saveModule(module)"/>
+					<input
+						class="btn btn-success" type="button" value="保存并新增" type="submit"
+						ng-show="showSaveAndAddButton" ng-click="saveAndAddModule(module)">
+					<input class="btn btn-primary" type="button" value="返回"
+						ng-click="returnList()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="realName">系统模块: </label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="module.name"
+						name="name" required />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="code"> 备注: </label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="module.remark"
+						name="remark"/>
+				</div>
+			</div>
+	</div>
+</div>

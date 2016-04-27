@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqut.dao.node.NodeDao">
+    <resultMap type="com.cqut.entity.Node" id="NodeMap">
+    	<result property="EId" column="EId"/>
+    	<result property="name" column="name"/>
+    	<result property="remark" column="remark"/>
+    	<result property="mapurl" column="mapurl"/>
+    	<result property="moduleId" column="moduleId"/>
+    </resultMap>
+    
+    <insert id="insertNode" parameterType="com.cqut.entity.Node">
+        insert into node(name,remark,mapurl,moduleId)
+        values(#{name},#{remark},#{mapurl},#{moduleId})
+    </insert>
+    
+    <update id="updateNode" parameterType="com.cqut.entity.Node">
+     	update node
+     	<set>
+     	  name=#{name},remark=#{remark},mapurl=#{mapurl},moduleId=#{moduleId}
+     	</set>
+     	<where>
+     	   EId=#{EId}
+     	</where>
+    </update>
+    
+    <delete id="deleteNode" parameterType="com.cqut.entity.Node">
+    	delete from node where EId=#{EId}
+    </delete>
+    
+    <select id="getNodes"  resultMap="NodeMap">
+     	select * from node	
+    </select>
+    <select id="getNodeById" resultMap="NodeMap">
+        select * from node 
+        <where>
+           EId=#{EId}
+        </where>
+    </select>
+    <select id="getNodesByModuleId"  resultMap="NodeMap">
+   		  select * from node 
+        <where>
+           moduleId=#{moduleId}
+        </where>
+    </select>
+</mapper>

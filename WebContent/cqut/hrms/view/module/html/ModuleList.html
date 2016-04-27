@@ -1,0 +1,15 @@
+<div ng-controller="moduleListController">  
+    <div class="row" style="margin-top: 10px;margin-bottom: 10px">
+         <div class="col-md-3">
+         		<input type="text"  class="form-control" ng-model="name"/>		
+         </div>
+         <div class="col-md-4">
+                <button type="button" class="btn btn-info" ng-click="searchModuleByName()">查询</button>
+         		<button type="button" class="btn btn-info" ng-click="insertModule()">新增</button>
+         		<button type="button" class="btn btn-info" ng-click="refreshGrid()">刷新</button>
+         </div>
+    </div>
+    <div class="row">
+     	<div class="gridStyle" ng-grid="gridOptions"></div>
+    </div>
+</div>
