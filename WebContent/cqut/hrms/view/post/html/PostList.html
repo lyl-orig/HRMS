@@ -1,0 +1,20 @@
+<div ng-controller="postListController">
+	 <div class="row" style="margin-top: 10px;margin-bottom: 10px">
+	    <div class="col-md-3">
+		    <select class="form-control" ng-model="post.departmentId" ng-options="o.EId as o.name for o in department">
+	    		<option value="">--- 请选择部门 ---</option>
+			</select>
+	    </div>
+         <div class="col-md-3">
+         		<input type="text"  class="form-control" ng-model="name"/>		
+         </div>
+         <div class="col-md-5">
+                <button type="button" class="btn btn-info" ng-click="searchPostByName()">查询</button>
+         		<button type="button" class="btn btn-info" ng-click="insertPost()">新增</button>
+         		<button type="button" class="btn btn-info" ng-click="refreshGrid()">刷新</button>
+         </div>
+    </div>
+    <div class="row">
+     	<div class="gridStyle" ng-grid="gridOptions" style="height:530px;width: 1138px"></div>
+    </div>
+</div>

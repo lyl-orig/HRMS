@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.cqut.dao.post.PostDao">
+ 	<resultMap id="PostMap" type="com.cqut.entity.Post">
+        <result property="EId" column="EId"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="departmentId" column="departmentId"/>      
+    </resultMap>
+    
+    <insert id="insertPost" parameterType="com.cqut.entity.Post">
+      	insert into post(name,code,departmentId)
+      	values(#{name},#{code},#{departmentId})
+    </insert>
+    
+    <select id="getAllPosts" resultMap="PostMap">
+          select * from post
+    </select>
+</mapper>

@@ -1,0 +1,41 @@
+<div ng-controller="postFormController">
+	<div class="row">
+		<form class="col-md-12 form-horizontal" name="postForm" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-info col-md-offset-1" type="button"
+						value="保存" type="submit" ng-click="savePost(post)"/>
+					<input
+						class="btn btn-info" type="button" value="保存并新增" type="submit"
+						ng-show="showSaveAndAddButton" ng-click="saveAndAddPost(post)">
+					<input class="btn btn-primary" type="button" value="返回"
+						ng-click="returnList()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="realName"> 岗位名称: </label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="post.name"
+						name="name" required />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="code"> 岗位编码: </label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="post.code"
+						name="code"/>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="departmentId"> 所属部门: </label>
+				<div class="col-md-9">
+				    <select class="form-control" ng-model="post.departmentId"  ng-options="o.EId as o.name for o in department">
+				    	<option value="">--- 请选择部门 ---</option>
+				    </select>
+				</div>
+			</div>
+		</div>
+	</form>
+	</div>
+</div>
