@@ -13,7 +13,7 @@
 	            <ul id="systemModules" class="nav navbar-nav pull-left"> 
 	           	   <li ng-repeat="module in modules" 
 	          	    	ng-class="{selectedModule:isSelected == $index}"
-	          	        ng-click="loadSystem(module.EId,$index)">
+	          	        ng-init="loadSystem(module.EId,$index)">
                         <a>{{module.name}}</a>
                     </li>
 				</ul>

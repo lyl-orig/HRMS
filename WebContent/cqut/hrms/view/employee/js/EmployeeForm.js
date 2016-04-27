@@ -17,7 +17,9 @@ function($rootScope,$scope,EmployeeService,$state,$stateParams){
 		}
 	}
 	
-	
+	$(".form_datetime").datetimepicker({
+        format: "dd MM yyyy - hh:ii"
+    });
 	$scope.addEmployee = function(employee)
 	{   
 		EmployeeService.insertEmployee(employee,sucesscb,errorcb);

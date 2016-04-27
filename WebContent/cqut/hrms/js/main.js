@@ -13,6 +13,7 @@ require.config({
 		'jquery':'../js/jquery/jquery-1.9.0',
 		'ngGridDebug':'../js/nggrid/ng-grid',
 		'uiBootstrap':'../js/bootstrap/ui-bootstrap-0.12.0',
+		'datetimepicker':'../js/bootstrap/js/bootstrap-datetimepicker',
 		'app':'js/app'
     },
     

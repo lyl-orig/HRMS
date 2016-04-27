@@ -16,9 +16,9 @@ define(['app'], function (app)
 		 $scope.loadSystem=function(systemModuleId,index){
 			 //alert(systemModuleId);
 			 $rootScope.nodes=[
-			               {name:'个人信息',mapurl:'main.list.personal.list'},
+			               {name:'个人信息',mapurl:'main.list.employee.list'},
 			               ]
-			 NodeService.getNodesByModuleId(systemModuleId,sucesscb,errorcb);
+			/* NodeService.getNodesByModuleId(systemModuleId,sucesscb,errorcb);
 			 
 			 function sucesscb(data){
 				 
@@ -26,7 +26,7 @@ define(['app'], function (app)
 			 }
 			 function errorcb(){
 				 alert("加载失败");
-			 }
+			 }*/
 		 }
 		var loginer=JSON.parse(sessionStorage.getItem("loginer"));
 		$scope.name=loginer.name;
