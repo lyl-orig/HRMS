@@ -37,10 +37,11 @@ public class DepartmentServiceImpl implements DepartmentService{
 		return 0;
 	}
 
+	@Transactional
 	@Override
 	public List<Department> getAllDepartments(String where) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return departmentDao.getAllDepartments(where);
 	}
 
 	@Override

@@ -226,6 +226,42 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 		})
 	}
   }))
+  
+    //	  =================================Post岗位========================
+  .state('main.list.post',angularAMD.route({
+		url : '/post',
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/post/html/PostList.html',
+				controllerUrl : ['view/post/js/PostList.js',
+				                 'view/post/js/PostService.js',
+				                 'view/department/js/DepartmentService.js']
+			})
+		}
+	  }))
+  .state('main.list.post.list',angularAMD.route({
+		url : '/list',
+		css:[],
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/post/html/PostList.html',
+				controllerUrl : ['view/post/js/PostList.js',
+				                 'view/post/js/PostService.js',
+				                 'view/department/js/DepartmentService.js']
+			})
+		}
+	  }))
+  .state('main.list.post.form',angularAMD.route({
+	url : '/form/:operate/:postId',
+	css:[],
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/post/html/PostForm.html',
+			controllerUrl : ['view/post/js/PostForm.js',
+			                 'view/post/js/PostService.js']
+		})
+	}
+  }))
 /*	  //图书列表
 	  .state('main.list.bookslist',angularAMD.route({
 		url : '/books',

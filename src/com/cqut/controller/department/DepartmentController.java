@@ -1,8 +1,11 @@
 package com.cqut.controller.department;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+
+import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,4 +40,16 @@ public class DepartmentController {
 		return JSON.toJsonString(jsonObject);
 	}
 	
+	@RequestMapping(value="getAllDepartments")
+	@ResponseBody
+	public String getAllDepartments(){
+		
+		List<Department> departments = departmentService.getAllDepartments("");
+		
+		JSONArray jsonArray = JSONArray.fromObject(departments);
+		
+		System.out.println(jsonArray.toString());
+		
+		return jsonArray.toString();
+	}
 }

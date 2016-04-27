@@ -16,5 +16,10 @@
         values(#{name},#{code},#{organizationId})  
 	
 	</insert>
-   
+   <select id="getAllDepartments" resultMap="DepartmentMap">
+  		 select * from department where 1=1
+    	<if test="where != ''">
+            and ${where}
+        </if>
+   </select>
 </mapper>

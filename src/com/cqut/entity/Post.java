@@ -9,7 +9,7 @@ public class Post {
 //	岗位名称
 	private String name;
 	
-	private int postId;
+	private int departmentId;
 	
 	
 	public String getName() {
@@ -17,12 +17,6 @@ public class Post {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public int getPostId() {
-		return postId;
-	}
-	public void setPostId(int postId) {
-		this.postId = postId;
 	}
 	public int getEId() {
 		return EId;
@@ -35,6 +29,12 @@ public class Post {
 	}
 	public void setCode(String code) {
 		this.code = code;
+	}
+	public int getDepartmentId() {
+		return departmentId;
+	}
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
 	}
 	
 	

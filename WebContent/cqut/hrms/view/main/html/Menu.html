@@ -2,9 +2,14 @@
 		
 		<li ng-repeat="node in nodes">
 		    <a ui-sref={{node.mapurl}}>
-		         {{node.name}}
+		        &nbsp;&nbsp;&nbsp;&nbsp; {{node.name}}
 		    </a>
 		 </li>
+		 <li >
+            <a ui-sref="main.list.post.list">
+                &nbsp;&nbsp;&nbsp;&nbsp; 岗位管理
+            </a>
+         </li>
        <!--  <li >
             <a ui-sref="main.list.employee.list">
                 <i class="glyphicon glyphicon-user"></i>
