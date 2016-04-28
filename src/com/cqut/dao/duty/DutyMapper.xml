@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.cqut.dao.duty.DutyDao">
+	<resultMap id="DutyMap" type="com.cqut.entity.Duty">
+        <result property="EId" column="EId"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+    </resultMap>
+    
+    <insert id="insertDuty" parameterType="com.cqut.entity.Duty">
+    	insert into duty(name,code)
+    	values(#{name},#{code})
+    </insert>
+    
+    <select id="getAlldDutys" parameterType="String" resultMap="DutyMap">
+    	select * from duty
+    </select>
+</mapper>

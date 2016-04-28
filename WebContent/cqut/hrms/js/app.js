@@ -262,43 +262,44 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 		})
 	}
   }))
-/*	  //图书列表
-	  .state('main.list.bookslist',angularAMD.route({
-		url : '/books',
+ //	  =================================Duty 职务========================
+  .state('main.list.duty',angularAMD.route({
+		url : '/duty',
 		views : {
 			"content@main":angularAMD.route({
-				templateUrl : 'view/book/html/BookList.html',
-				controller:'BookController',
-				controllerUrl:['view/book/js/BookController.js' ]//必需是数组
-			})
-		}
-	  }))*/
-/*	  //编辑图书
-	  .state('main.list.updateBook',angularAMD.route({
-		url : '/updateBook/:id',
-		views : {
-			"content@main":angularAMD.route({
-				templateUrl : 'view/book/html/BookForm.html',
-				controller:'BookFormController',
-				controllerUrl:['view/book/js/BookFormController.js']//必需是数组
+				templateUrl : 'view/duty/html/DutyList.html',
+				controllerUrl : ['view/duty/js/DutyList.js',
+				                 'view/duty/js/DutyService.js',
+				                ]
 			})
 		}
 	  }))
-	  //新增图书
-	  .state('main.list.addBook',angularAMD.route({
-		url : '/addBook',
+  .state('main.list.duty.list',angularAMD.route({
+		url : '/list',
+		css:[],
 		views : {
 			"content@main":angularAMD.route({
-				templateUrl : 'view/book/html/BookForm.html',
-				controller:'BookFormController',
-				controllerUrl:['view/book/js/BookFormController.js']//必需是数组
+				templateUrl : 'view/duty/html/DutyList.html',
+				controllerUrl : ['view/duty/js/DutyList.js',
+				                 'view/duty/js/DutyService.js',
+				                 ]
 			})
 		}
-	  }))*/
+	  }))
+  .state('main.list.duty.form',angularAMD.route({
+	url : '/form/:operate/:dutyId',
+	css:[],
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/duty/html/DutyForm.html',
+			controllerUrl : ['view/duty/js/DutyForm.js',
+			                 'view/duty/js/DutyService.js']
+		})
+	}
+  }))
 		//\\insertRow\\//
-	})
+})
 
-	
 	return angularAMD.bootstrap(app);
 });
 

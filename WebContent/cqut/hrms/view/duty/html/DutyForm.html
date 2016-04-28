@@ -1,0 +1,33 @@
+<div ng-controller="dutyFormController">
+	<div class="row">
+		<form class="col-md-12 form-horizontal" name="dutyForm" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-info col-md-offset-1" type="button"
+						value="保存" type="submit" ng-click="saveDuty(duty)"/>
+					<input
+						class="btn btn-info" type="button" value="保存并新增" type="submit"
+						ng-show="showSaveAndAddButton" ng-click="saveAndAddDuty(duty)">
+					<input class="btn btn-primary" type="button" value="返回"
+						ng-click="returnList()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="realName"> 职务名称: </label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="duty.name"
+						name="name" required />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="code"> 职务编码: </label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="duty.code"
+						name="code"/>
+				</div>
+			</div>
+		</div>
+	 </form>
+	</div>
+</div>
