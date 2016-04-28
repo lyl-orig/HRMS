@@ -1,7 +1,7 @@
 <div ng-controller="nodeListController">
 	 <div class="row" style="margin-top: 10px;margin-bottom: 10px">
 	    <div class="col-md-3">
-		    <select class="form-control" ng-model="node.moduleId" ng-options="m.EId as m.name for m in module" ng-change="selectItem()">
+		    <select class="form-control" ng-model="node.moduleId" ng-options="m.EId as m.name for m in module">
 	    		<option value="">--- 选择模块 ---</option>
 			</select>
 	    </div>
@@ -12,6 +12,7 @@
                 <button type="button" class="btn btn-info" ng-click="searchNodeByName()">查询</button>
          		<button type="button" class="btn btn-info" ng-click="insertNode()">新增</button>
          		<button type="button" class="btn btn-info" ng-click="refreshGrid()">刷新</button>
+         		<button type="button" class="btn btn-info" ng-click="deleteNodes()">批量删除</button>
          </div>
     </div>
     <div class="row">

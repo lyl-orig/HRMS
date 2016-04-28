@@ -25,8 +25,11 @@ function($rootScope,$scope,ModuleService,$state,$stateParams){
 
 		function sucesscb(data)
 		{
-			console.log(data);
-			$state.go('main.list.module.list');
+			if(data.insert){
+				$state.go('main.list.module.list');
+			}else{
+				alert('添加失败!');
+			}	
 		}
 		function errorcb()
 		{
@@ -36,7 +39,22 @@ function($rootScope,$scope,ModuleService,$state,$stateParams){
 	
 	//保存并新增
 	$scope.saveAndAddModule = function(module){
-		alert('保存并新增!');
+		
+		ModuleService.insertModule(module,sucesscb,errorcb);
+
+		function sucesscb(data)
+		{
+			if(data.insert){
+				$scope.module='';
+				$state.go('main.list.module.form',{operate:'add'});
+			}else{
+				alert('添加失败!');
+			}	
+		}
+		function errorcb()
+		{
+			alert('添加失败!');
+		}
 	}
 	//返回列表页
 	$scope.returnList = function(){

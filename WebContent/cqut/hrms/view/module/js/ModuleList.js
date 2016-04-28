@@ -66,7 +66,8 @@ function($rootScope,$scope,$state,$stateParams,ModuleService){
 				  enableCellEdit: false,
 				  sortable: false,
 				  pinnable: false,
-				  cellTemplate: '<div><a ui-sref="main.list.module.form({oprate:"edit",id:row.getProperty(col.field)})">修改</a>'+
+				  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updateModule({id:row.getProperty(col.field)})">修改</a>'+
+				  '&nbsp;&nbsp<a ng-click="displayModule({id:row.getProperty(col.field)})" >查看</a>'+
 				  '&nbsp;&nbsp<a ng-click="deleteModule({id:row.getProperty(col.field)})" >删除</a></div>'
 			         	
 			  }],

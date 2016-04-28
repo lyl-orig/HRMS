@@ -38,7 +38,7 @@
            EId=#{EId}
         </where>
     </select>
-    <select id="getNodesByModuleId"  resultMap="NodeMap">
+    <select id="getNodesByModuleId" resultMap="NodeMap">
    		  select * from node 
         <where>
            moduleId=#{moduleId}

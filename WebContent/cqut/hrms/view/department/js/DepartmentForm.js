@@ -4,9 +4,9 @@ angular.module('departmentModule', [])
     function($rootScope,$scope,$state,$stateParams,DepartmentService,OrganizationService){
 	
 	
-	  $scope.selectItem=function(){
-		alert($scope.department.organizationId);
-	  }
+//	  $scope.selectItem=function(){
+//		alert($scope.department.organizationId);
+//	  }
 	   //加载全部组织机构
 	     OrganizationService.getOrganizations(sucesscb,errorcb);
 		 
@@ -48,5 +48,26 @@ angular.module('departmentModule', [])
 		{
 			alert('添加失败!');
 		}
+	}
+	$scope.saveAndAddDepartment=function(department){
+		
+		DepartmentService.insertDepartment(department,sucesscb,errorcb);
+		function sucesscb(data)
+		{
+			if(data.insert){
+				$state.go('main.list.department.form',{operate:'add'});
+				$scope.department='';
+			}else{
+				alert('添加失败!');
+			}
+			
+		}
+		function errorcb()
+		{
+			alert('添加失败!');
+		}
+	}
+	$scope.returnList=function(){
+		$state.go('main.list.department.list');
 	}
 }]);

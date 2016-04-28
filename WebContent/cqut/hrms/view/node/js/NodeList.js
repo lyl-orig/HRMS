@@ -49,18 +49,18 @@ angular.module('nodeModule', [])
 				  {
 					 field : 'name',
 					 displayName : '功能名称',
-					 width:150,
+					 width:200,
 					 enableCellEdit: true,
 				  },{
 					  field : 'mapurl',
 					  displayName : '访问路径',
-					  width:150,
+					  width:200,
 					  enableCellEdit: true
 				  }
 				  ,{
 					  field : 'remark',
 					  displayName : '备注',
-					  width:150,
+					  width:200,
 					  enableCellEdit: true
 				  },
 				  {
@@ -69,7 +69,8 @@ angular.module('nodeModule', [])
 					  enableCellEdit: false,
 					  sortable: false,
 					  pinnable: false,
-					  cellTemplate:  '<div><a ng-click="updateNode(row.getProperty(col.field))">修改</a>'+
+					  cellTemplate:  '<div>&nbsp;&nbsp<a ng-click="updateNode(row.getProperty(col.field))">修改</a>'+
+					  '&nbsp;&nbsp<a ng-click="displayNode({EId:row.getProperty(col.field)})" >查看</a>'+
 						'&nbsp;&nbsp<a ng-click="deleteNode({EId:row.getProperty(col.field)})" >删除</a></div>'		  
 				         	
 				  }],

@@ -3,20 +3,21 @@ angular.module('postModule', [])
        function($rootScope,$scope,$state,$stateParams,DepartmentService,PostService){
 	   
 	  //加载全部部门
-      DepartmentService.getAllDepartments(sucesscb,errorcb);
-	 
-	  function sucesscb(data)
-		{
-		    $scope.department=data;
-		}
-		function errorcb()
-		{
-			alert('获取部门失败!');
-		}	
+     
 		PostService.getAllPosts(sucesscb,errorcb);
 		function sucesscb(data)
 		{
-		    $scope.posts=data;
+		      $scope.posts=data;
+		      DepartmentService.getAllDepartments(sucesscb,errorcb);
+			 
+			  function sucesscb(data)
+				{
+				    $scope.department=data;
+				}
+				function errorcb()
+				{
+					alert('获取部门失败!');
+				}	
 		}
 		function errorcb()
 		{
@@ -60,7 +61,8 @@ angular.module('postModule', [])
 					  enableCellEdit: false,
 					  sortable: false,
 					  pinnable: false,
-					  cellTemplate: '<div><a ng-click="updatePost({id:row.getProperty(col.field)})">修改</a>'+
+					  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updatePost({id:row.getProperty(col.field)})">修改</a>'+
+					  '&nbsp;&nbsp<a ng-click="displayPost({id:row.getProperty(col.field)})" >查看</a>'+
 					  '&nbsp;&nbsp<a ng-click="deletePost({id:row.getProperty(col.field)})" >删除</a></div>'	         	
 				  }],
 				    enablePaging: true,

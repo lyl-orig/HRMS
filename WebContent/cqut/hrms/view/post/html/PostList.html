@@ -6,12 +6,13 @@
 			</select>
 	    </div>
          <div class="col-md-3">
-         		<input type="text"  class="form-control" ng-model="name"/>		
+         		<input type="text"  class="form-control" ng-model="name" placeholder="请输入岗位名称"/>		
          </div>
          <div class="col-md-5">
                 <button type="button" class="btn btn-info" ng-click="searchPostByName()">查询</button>
          		<button type="button" class="btn btn-info" ng-click="insertPost()">新增</button>
          		<button type="button" class="btn btn-info" ng-click="refreshGrid()">刷新</button>
+         <button type="button" class="btn btn-info" ng-click="deletePosts()">批量删除</button>
          </div>
     </div>
     <div class="row">
