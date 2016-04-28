@@ -297,6 +297,41 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 		})
 	}
   }))
+  //	  =================================Message 职务========================
+  .state('main.list.message',angularAMD.route({
+		url : '/message',
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/message/html/MessageList.html',
+				controllerUrl : ['view/message/js/MessageList.js',
+				                 'view/message/js/MessageService.js',
+				                ]
+			})
+		}
+	  }))
+  .state('main.list.message.list',angularAMD.route({
+		url : '/list',
+		css:[],
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/message/html/MessageList.html',
+				controllerUrl : ['view/message/js/MessageList.js',
+				                 'view/message/js/MessageService.js',
+				                 ]
+			})
+		}
+	  }))
+  .state('main.list.message.form',angularAMD.route({
+	url : '/form/:operate/:messageId',
+	css:[],
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/message/html/MessageForm.html',
+			controllerUrl : ['view/message/js/MessageForm.js',
+			                 'view/message/js/MessageService.js']
+		})
+	}
+  }))
 		//\\insertRow\\//
 })
 

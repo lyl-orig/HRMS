@@ -1,0 +1,34 @@
+<div ng-controller="messageFormController">
+	<div class="row">
+		<form class="col-md-12 form-horizontal" name="messageForm" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-info col-md-offset-1" type="button"
+						value="保存" type="submit" ng-click="saveMessage(message)"/>
+					<input
+						class="btn btn-info" type="button" value="保存并新增" type="submit"
+						ng-show="showSaveAndAddButton" ng-click="saveAndAddMessage(message)">
+					<input class="btn btn-primary" type="button" value="返回"
+						ng-click="returnList()" />
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" for="realName"> 消息名称:&nbsp; &nbsp;&nbsp;&nbsp;</label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" ng-model="message.name"
+						name="name" required />
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" for="code"> 消息内容: &nbsp; &nbsp;&nbsp;&nbsp;</label>
+				<div class="col-md-10">
+				<textarea  cols="40" class="form-control" ng-model="message.content">
+				
+				</textarea>
+				</div>
+			</div>
+			
+	 </form>
+	</div>
+</div>

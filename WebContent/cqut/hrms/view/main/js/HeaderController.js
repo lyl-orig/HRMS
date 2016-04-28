@@ -34,7 +34,7 @@ define(['app'], function (app)
 		                 {name:'岗位管理',mapurl:'main.list.post.list'},
 		                 {name:'职务管理',mapurl:'main.list.duty'}, 
 		                 {name:'日志管理',mapurl:'main.list.log.list'}, 
-		                 {name:'系统消息管理',mapurl:'main.list.massage.list'},
+		                 {name:'系统消息管理',mapurl:'main.list.message'},
 		                 {name:'权限管理',mapurl:'main.list.permission.list'}
 		                ];
 		 
