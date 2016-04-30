@@ -12,14 +12,16 @@ public interface DepartmentDao {
 	
 	public int updateDepartment(Department department);
 	
-	public int deleteDepartment(Department department);
+	public int deleteDepartment(@Param("EId") int EId);
 	
 	public List<Department> getAllDepartments(@Param("where") String where);
 	
-	public List<Department> getDepartmentsByName(@Param("name") String name);
+	public List<Department> getDepartmentByName(@Param("name") String name);
 	
-	public List<Department> getDepartmentsByOrgaId(@Param("organizationId") int organizationId);
+	public List<Department> getDepartmentByOrgId(@Param("organizationId") int organizationId);
 	
-	public Department getDepartmentsByOrgaIdAndName(@Param("name") String name, @Param("organizationId") int organizationId);
-
+	public List<Department> getDepartmentByOrgIdAndName(@Param("organizationId") int organizationId,@Param("name") String name);
+	
+	public Department getDepartmentById(@Param("EId") int EId);
+	
 }

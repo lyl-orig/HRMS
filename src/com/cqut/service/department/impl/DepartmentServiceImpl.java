@@ -27,14 +27,14 @@ public class DepartmentServiceImpl implements DepartmentService{
 
 	@Override
 	public int updateDepartment(Department department) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return departmentDao.updateDepartment(department);
 	}
 
 	@Override
-	public int deleteDepartment(Department department) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteDepartment(int EId) {
+		
+		return departmentDao.deleteDepartment(EId);
 	}
 
 	@Transactional
@@ -44,23 +44,32 @@ public class DepartmentServiceImpl implements DepartmentService{
 		return departmentDao.getAllDepartments(where);
 	}
 
+	@Transactional
 	@Override
-	public List<Department> getDepartmentsByName(String name) {
+	public List<Department> getDepartmentByName(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return departmentDao.getDepartmentByName(name);
 	}
 
+	@Transactional
 	@Override
-	public List<Department> getDepartmentsByOrgaId(int organizationId) {
+	public List<Department> getDepartmentByOrgId(int organizationId) {
 		// TODO Auto-generated method stub
-		return null;
+		return departmentDao.getDepartmentByOrgId(organizationId);
 	}
 
+	@Transactional
 	@Override
-	public Department getDepartmentsByOrgaIdAndName(String name,
-			int organizationId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Department> getDepartmentByOrgIdAndName(int organizationId,String name) 
+	{
+		return departmentDao.getDepartmentByOrgIdAndName(organizationId, name);
+	}
+	
+	@Transactional
+	@Override
+	public Department getDepartmentById(int id) {
+		
+		return departmentDao.getDepartmentById(id);
 	}
 
 }

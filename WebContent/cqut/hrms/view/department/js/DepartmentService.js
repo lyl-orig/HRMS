@@ -14,9 +14,9 @@ departmentApp.factory('DepartmentService',['$resource',function($resource){
 		departmentService.save({action:'updateDepartment'},department,sucesscb,errorcb);
 	}
 	
-	departmentService.deleteDepartment = function(department,sucesscb,errorcb){
+	departmentService.deleteDepartment = function(departmentId,sucesscb,errorcb){
 		
-		departmentService.save({action:'deleteDepartment'},department,sucesscb,errorcb);
+		departmentService.save({action:'deleteDepartment'},departmentId,sucesscb,errorcb);
 	}
 	
 	departmentService.getAllDepartments = function(sucesscb,errorcb){
@@ -24,19 +24,25 @@ departmentApp.factory('DepartmentService',['$resource',function($resource){
 		departmentService.query({action:'getAllDepartments'},sucesscb,errorcb);	
 	}
 	
-	departmentService.getDepartmentsByName = function(name,sucesscb,errorcb){
+	departmentService.getDepartmentByName = function(name,sucesscb,errorcb){
 		
-		departmentService.query({action:'getDepartmentsByName',name:name},sucesscb,errorcb);
+		departmentService.save({action:'getDepartmentByName'},name,sucesscb,errorcb);
 	}
 	
-	departmentService.getDepartmentsByOrgaId = function(organizationId,sucesscb,errorcb){
+	departmentService.getDepartmentByOrgId = function(organizationId,sucesscb,errorcb){
 		
-		departmentService.query({action:'getDepartmentsByOrgaId',organizationId:organizationId},sucesscb,errorcb);
+		departmentService.save({action:'getDepartmentByOrgId'},{organizationId:organizationId},sucesscb,errorcb);
 	}
 	
-	departmentService.getDepartmentsByOrgaIdAndName = function(organizationId,name,sucesscb,errorcb){
+	departmentService.getDepartmentByOrgIdAndName = function(organizationId,name,sucesscb,errorcb){
 		
-		departmentService.get({action:'getDepartmentsByOrgaIdAndName',organizationId:organizationId,name:name},sucesscb,errorcb);
+		departmentService.save({action:'getDepartmentByOrgIdAndName'},{organizationId:organizationId,name:name},sucesscb,errorcb);
 	}
+	
+	departmentService.getDepartmentById=function(id,sucesscb,errorcb){
+		
+		departmentService.save({action:'getDepartmentById'},id,sucesscb,errorcb);
+	}
+	
 	return departmentService;
 }]);

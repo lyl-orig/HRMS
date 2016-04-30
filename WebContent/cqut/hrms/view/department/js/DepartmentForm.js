@@ -4,9 +4,6 @@ angular.module('departmentModule', [])
     function($rootScope,$scope,$state,$stateParams,DepartmentService,OrganizationService){
 	
 	
-//	  $scope.selectItem=function(){
-//		alert($scope.department.organizationId);
-//	  }
 	   //加载全部组织机构
 	     OrganizationService.getOrganizations(sucesscb,errorcb);
 		 
@@ -26,6 +23,25 @@ angular.module('departmentModule', [])
 	
 	$scope.operate = $stateParams.operate;
 	
+	$scope.getInitData = function(){
+		if($scope.operate=='edit'){
+			$scope.getDetail();
+		}
+	}
+	$scope.getDetail=function(){
+		
+		DepartmentService.getDepartmentById($stateParams.departmentId,sucesscb,errorcb);
+
+		function sucesscb(data)
+		{
+			$scope.department =data;
+		};
+
+		function errorcb(data)
+		{
+			alert('加载失败');
+		};
+	}
 	$scope.saveDepartment = function(department){
 		if($scope.operate=='add')
 		{
@@ -47,6 +63,18 @@ angular.module('departmentModule', [])
 		function errorcb()
 		{
 			alert('添加失败!');
+		}
+	}
+	$scope.updateDepartment=function(department){
+		
+		DepartmentService.updateDepartment(department,sucesscb,errorcb);
+		function sucesscb(data)
+		{
+			$state.go('main.list.department.list');
+		}
+		function errorcb()
+		{
+			alert('失败!');
 		}
 	}
 	$scope.saveAndAddDepartment=function(department){

@@ -35,6 +35,7 @@ angular.module('departmentModule', [])
 				enableCellEdit: true,
 				enablePinning: true,
 				showSelectionCheckbox:true,
+				selectedItems:[],
 				columnDefs:[
 				  {
 					 field : 'EId',
@@ -60,9 +61,9 @@ angular.module('departmentModule', [])
 					  enableCellEdit: false,
 					  sortable: false,
 					  pinnable: false,
-					  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updateDepartment({id:row.getProperty(col.field)})">修改</a>'+
-					  '&nbsp;&nbsp<a ng-click="displayDepartment({id:row.getProperty(col.field)})" >查看</a>'+
-					  '&nbsp;&nbsp<a ng-click="deleteDepartment({id:row.getProperty(col.field)})" >删除</a></div>'
+					  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updateDepartment(row.getProperty(col.field))">修改</a>'+
+					  '&nbsp;&nbsp<a ng-click="displayDepartment(row.getProperty(col.field))" >查看</a>'+
+					  '&nbsp;&nbsp<a ng-click="deleteDepartment(row.getProperty(col.field))" >删除</a></div>'
 				         	
 				  }],
 				    enablePaging: true,
@@ -76,9 +77,93 @@ angular.module('departmentModule', [])
 			      i18n:'zh-cn'
 			};
 		 
-	  
+	   $scope.displayDepartment=function(departmentId){
+		  
+		  $state.go('main.list.department.display',{departmentId:departmentId});
+	   }
+	   
+	   $scope.updateDepartment=function(departmentId){
+		   
+		   $state.go('main.list.department.form',{operate:'edit',departmentId:departmentId});
+	   }
+	   
+	   $scope.deleteDepartment=function(departmentId){
+		   
+		   DepartmentService.deleteDepartment(departmentId,sucesscb,errorcb);
+		   function sucesscb(data)
+			{
+			   $scope.refreshGrid();
+			}
+			function errorcb()
+			{
+				alert('失败!');
+			}
+	   }
+	   
+	   $scope.deleteDepartments=function(){
+		    var items =$scope.gridOptions.selectedItems;
+	    	for(var i=0;i<items.length;i++)
+	    	{
+	    		$scope.deleteDepartment(items[i].EId);
+	    	}
+	   }
+	   $scope.searchDepartment=function(){
+		   
+		   if($scope.organizationId && $scope.name){
+			   alert($scope.organizationId + $scope.name);
+			   DepartmentService.getDepartmentByOrgIdAndName($scope.organizationId,$scope.name,sucesscb,errorcb);
+	    		function sucesscb(data){
+	    			$scope.departments=JSON.parse(data.departments);
+				}
+				function errorcb (){
+					
+				}
+		   }else if($scope.organizationId){
+			   DepartmentService.getDepartmentByOrgId($scope.organizationId,sucesscb,errorcb);
+	    		function sucesscb(data){
+	    			$scope.departments=JSON.parse(data.departments);
+				}
+				function errorcb (){
+					
+				}
+		   }else if($scope.name){
+			   DepartmentService.getDepartmentByName($scope.name,sucesscb,errorcb);
+	    		function sucesscb(data){
+	    			$scope.departments=JSON.parse(data.departments);
+				}
+				function errorcb (){
+					
+				}
+		   }else{
+			   $scope.refreshGrid();
+		   }
+	   }
 	    //新增部门
-	    $scope.insertDepartment = function(){	    	
+	   $scope.insertDepartment = function(){	    	
 	    	$state.go('main.list.department.form',{operate:'add'});
-	    }
+	   }
+	   
+	   $scope.refreshGrid=function(){
+			//加载全部部门
+			DepartmentService.getAllDepartments(sucesscb,errorcb);
+			function sucesscb(data)
+			{
+			    $scope.departments=data;
+			    //加载全部组织机构
+			    OrganizationService.getOrganizations(sucesscb,errorcb);
+				 
+				function sucesscb(data)
+				{
+				    $scope.organization=data;		
+				}
+				function errorcb()
+				{
+					alert('获取机构列表失败!');
+				}
+			}
+			function errorcb()
+			{
+				alert('获取机构列表失败!');
+			}
+	   }
 }]);

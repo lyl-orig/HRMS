@@ -12,13 +12,15 @@ public interface DepartmentService {
 	
 	public int updateDepartment(Department department);
 	
-	public int deleteDepartment(Department department);
+	public int deleteDepartment(int EId);
 	
 	public List<Department> getAllDepartments(String where);
 	
-	public List<Department> getDepartmentsByName(String name);
+	public List<Department> getDepartmentByName(String name);
 	
-	public List<Department> getDepartmentsByOrgaId(int organizationId);
+	public List<Department> getDepartmentByOrgId(int organizationId);
 	
-	public Department getDepartmentsByOrgaIdAndName(String name,int organizationId);
+	public List<Department> getDepartmentByOrgIdAndName(int organizationId,String name);
+	
+	public Department getDepartmentById(int id);
 }

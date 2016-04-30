@@ -1,7 +1,7 @@
 <div ng-controller="departmentListController">
 	 <div class="row" style="margin-top: 10px;margin-bottom: 10px">
 	    <div class="col-md-3">
-		    <select class="form-control" ng-model="organization.EId" ng-options="o.EId as o.name for o in organization" ng-change="selectItem()">
+		    <select class="form-control" ng-model="organizationId" ng-options="o.EId as o.name for o in organization" ng-change="selectItem()">
 	    		<option value="">--- 请选择组织机构 ---</option>
 			</select>
 	    </div>
@@ -9,7 +9,7 @@
          		<input type="text"  class="form-control" ng-model="name" placeholder="请输入部门名称"/>		
          </div>
          <div class="col-md-5">
-                <button type="button" class="btn btn-info" ng-click="searchDepartmentByName()">查询</button>
+                <button type="button" class="btn btn-info" ng-click="searchDepartment()">查询</button>
          		<button type="button" class="btn btn-info" ng-click="insertDepartment()">新增</button>
          		<button type="button" class="btn btn-info" ng-click="refreshGrid()">刷新</button>
          		<button type="button" class="btn btn-info" ng-click="deleteDepartments()">批量删除</button>

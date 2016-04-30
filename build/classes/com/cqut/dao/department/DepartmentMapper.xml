@@ -22,4 +22,30 @@
             and ${where}
         </if>
    </select>
+   
+   <select id="getDepartmentById" resultMap="DepartmentMap">
+    	select * from department where EId=#{EId}
+   </select>
+   
+   <delete id="deleteDepartment" parameterType ="com.cqut.entity.Department">
+   		delete from department where EId=#{EId}
+   </delete>
+   <update id="updateDepartment" parameterType ="com.cqut.entity.Department">
+        update department
+        <set>
+        	name=#{name},code=#{code},organizationId=#{organizationId}
+        </set>
+        <where>
+         	EId=#{EId}
+        </where>
+   </update>
+   <select id="getDepartmentByOrgIdAndName" resultMap="DepartmentMap">
+       select * from department where organizationId=#{organizationId} and name like "%"#{name}"%"
+   </select>
+   <select id="getDepartmentByOrgId" resultMap="DepartmentMap">
+   		select * from department where organizationId=#{organizationId}
+   </select>
+   <select id="getDepartmentByName"  resultMap="DepartmentMap">
+   			select * from department where name like "%"#{name}"%"
+   </select>
 </mapper>

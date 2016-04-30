@@ -9,7 +9,7 @@ function($rootScope,$scope,$state,$stateParams,DepartmentService)
 
 		function sucesscb(data)
 		{
-			$scope.module =data;
+			$scope.department =data;
 		};
 
 		function errorcb(data)
@@ -19,6 +19,6 @@ function($rootScope,$scope,$state,$stateParams,DepartmentService)
 	}
 	
 	$scope.returnList=function(){
-		$state.go('main.list.module.list');
+		$state.go('main.list.department.list');
 	}
 }]);

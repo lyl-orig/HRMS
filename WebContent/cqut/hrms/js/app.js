@@ -142,7 +142,8 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 			"content@main":angularAMD.route({
 				templateUrl : 'view/department/html/DepartmentList.html',
 				controllerUrl : ['view/department/js/DepartmentList.js',
-				                 'view/organization/js/OrganizationService.js'
+				                 'view/organization/js/OrganizationService.js',
+				                 'view/department/js/DepartmentService.js'
 				                 ]
 			})
 		}
@@ -161,7 +162,7 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 			}
 		  }))
 	  .state('main.list.department.form',angularAMD.route({
-		url : '/form/:operate',
+		url : '/form/:operate/:departmentId',
 		css:[],
 		views : {
 			"content@main":angularAMD.route({
@@ -169,6 +170,18 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 				controllerUrl : ['view/department/js/DepartmentForm.js',
 				                 'view/department/js/DepartmentService.js',
 				                 'view/organization/js/OrganizationService.js']
+			})
+		}
+	  }))
+	  .state('main.list.department.display',angularAMD.route({
+		url : '/display/:departmentId',
+		css:[],
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/department/html/DepartmentDisplay.html',
+				controllerUrl : ['view/department/js/DepartmentDisplay.js',
+				                 'view/department/js/DepartmentService.js',
+				                ]
 			})
 		}
 	  }))

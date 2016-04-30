@@ -111,6 +111,7 @@ public class NodeController {
 		
 		return JSON.toJsonString(jsonObject);
 	}
+	
 	@RequestMapping(value="getNodesByModuleIdAndName")
 	@ResponseBody
 	public String getNodesByModuleIdAndName(@RequestBody Node node){
