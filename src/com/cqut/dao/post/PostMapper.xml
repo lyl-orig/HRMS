@@ -18,4 +18,32 @@
     <select id="getAllPosts" resultMap="PostMap">
           select * from post
     </select>
+    <select id="getPostById" resultMap="PostMap">
+     	select * from post where EId = #{EId}
+    </select>
+    
+    <update id="updatePost" parameterType="com.cqut.entity.Post">
+    	update post
+    	<set>
+    	  	name=#{name},code=#{code},departmentId=#{departmentId}
+    	</set>
+    	<where>
+    		EId=#{EId}
+    	</where>
+    </update>
+    
+    <delete id="deletePost" parameterType="com.cqut.entity.Post">
+         delete from post where EId=#{EId}
+    </delete>
+    
+    <select id="getPostByDepartmentIdAndName" resultMap="PostMap">
+    	select * from post where departmentId=#{departmentId} and name like "%"#{name}"%"
+    </select>
+    
+    <select id="getPostByDepartmentId" resultMap="PostMap">
+    	select * from post where departmentId=#{departmentId} 
+    </select>
+    <select id="getPostByName" resultMap="PostMap">
+    	select * from post where name like "%"#{name}"%"
+    </select>
 </mapper>

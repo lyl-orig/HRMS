@@ -306,6 +306,17 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 		})
 	}
   }))
+   .state('main.list.post.display',angularAMD.route({
+	url : '/display/:postId',
+	css:[],
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/post/html/PostDisplay.html',
+			controllerUrl : ['view/post/js/PostDisplay.js',
+			                 'view/post/js/PostService.js']
+		})
+	}
+  }))
  //	  =================================Duty 职务========================
   .state('main.list.duty',angularAMD.route({
 		url : '/duty',

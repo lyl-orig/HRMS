@@ -1,7 +1,7 @@
 <div ng-controller="postListController">
 	 <div class="row" style="margin-top: 10px;margin-bottom: 10px">
 	    <div class="col-md-3">
-		    <select class="form-control" ng-model="post.departmentId" ng-options="o.EId as o.name for o in department">
+		    <select class="form-control" ng-model="departmentId" ng-options="o.EId as o.name for o in department">
 	    		<option value="">--- 请选择部门 ---</option>
 			</select>
 	    </div>
@@ -9,7 +9,7 @@
          		<input type="text"  class="form-control" ng-model="name" placeholder="请输入岗位名称"/>		
          </div>
          <div class="col-md-5">
-                <button type="button" class="btn btn-info" ng-click="searchPostByName()">查询</button>
+                <button type="button" class="btn btn-info" ng-click="searchPost()">查询</button>
          		<button type="button" class="btn btn-info" ng-click="insertPost()">新增</button>
          		<button type="button" class="btn btn-info" ng-click="refreshGrid()">刷新</button>
          <button type="button" class="btn btn-info" ng-click="deletePosts()">批量删除</button>

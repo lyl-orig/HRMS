@@ -19,6 +19,25 @@ angular.module('postModule', [])
     $scope.showSaveAndAddButton = $stateParams.operate == 'add' ?true:false;
 	
 	$scope.operate = $stateParams.operate;
+	$scope.getInitData = function(){
+		if($scope.operate=='edit'){
+			$scope.getDetail();
+		}
+	}
+	$scope.getDetail=function(){
+		
+		PostService.getPostById($stateParams.postId,sucesscb,errorcb);
+
+		function sucesscb(data)
+		{
+			$scope.post =data;
+		};
+
+		function errorcb(data)
+		{
+			alert('加载失败');
+		};
+	}
 	
 	$scope.savePost = function(post){
 		if($scope.operate=='add')
@@ -40,6 +59,23 @@ angular.module('postModule', [])
 			}else{
 				alert('添加失败!');
 			}
+		}
+		function errorcb()
+		{
+			alert('添加失败!');
+		}
+	}
+	$scope.updatePost=function(post){
+		
+		PostService.updatePost(post,sucesscb,errorcb);
+		function sucesscb(data)
+		{
+			if(data.update){
+				$state.go('main.list.post.list');
+			}else{
+				alert('更新失败!');
+			}
+			
 		}
 		function errorcb()
 		{

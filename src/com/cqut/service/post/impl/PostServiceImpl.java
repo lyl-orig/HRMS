@@ -31,4 +31,46 @@ public class PostServiceImpl implements PostService{
 		return postDao.getAllPosts(where);
 	}
 
+	@Transactional
+	@Override
+	public Post getPostById(int EId) {
+		
+		return postDao.getPostById(EId);
+	}
+
+	@Transactional
+	@Override
+	public int updatePost(Post post) {
+		
+		return postDao.updatePost(post);
+	}
+
+	@Transactional
+	@Override
+	public int deletePost(int EId) {
+		
+		return postDao.deletePost(EId);
+	}
+
+	@Transactional
+	@Override
+	public List<Post> getPostByDepartmentIdAndName(int departmentId, String name) {
+		// TODO Auto-generated method stub
+		return postDao.getPostByDepartmentIdAndName(departmentId, name);
+	}
+
+	@Transactional
+	@Override
+	public List<Post> getPostByDepartmentId(int departmentId) {
+		// TODO Auto-generated method stub
+		return postDao.getPostByDepartmentId(departmentId);
+	}
+
+	@Transactional
+	@Override
+	public List<Post> getPostByName(String name) {
+		// TODO Auto-generated method stub
+		return postDao.getPostByName(name);
+	}
+
 }

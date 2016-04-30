@@ -12,8 +12,15 @@ public interface PostDao {
 	
 	public int updatePost(Post post);
 	
-	public int deletePost(Post post);
+	public int deletePost(@Param("EId")int EId);
 	
 	public List<Post> getAllPosts(@Param("where") String where);
 	
+	public Post getPostById(@Param("EId") int EId);
+	
+	public List<Post> getPostByDepartmentIdAndName(@Param("departmentId") int departmentId,@Param("name") String name);
+
+	public List<Post> getPostByDepartmentId(@Param("departmentId") int departmentId);
+	
+	public List<Post> getPostByName(@Param("name") String name);
 }
