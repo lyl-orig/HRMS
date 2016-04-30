@@ -7,6 +7,26 @@ angular.module('dutyModule', [])
 	
 	$scope.operate = $stateParams.operate;
 	
+	$scope.getInitData = function(){
+		if($scope.operate=='edit'){
+			$scope.getDetail();
+		}
+	}
+	$scope.getDetail = function(){
+
+		DutyService.getDutyById($stateParams.dutyId,sucesscb,errorcb);	
+		
+		function sucesscb(data)
+		{
+			$scope.duty =data;
+		};
+
+		function errorcb(data)
+		{
+			alert('加载失败');
+		};
+	}
+	
 	$scope.saveDuty = function(duty){
 		if($scope.operate=='add')
 		{
@@ -23,6 +43,19 @@ angular.module('dutyModule', [])
 		function sucesscb(data)
 		{
 			console.log(data);
+			$state.go('main.list.duty.list');
+		}
+		function errorcb()
+		{
+			alert('添加失败!');
+		}
+	}
+	$scope.updateDuty=function(duty){
+		
+		DutyService.updateDuty(duty,sucesscb,errorcb);
+		function sucesscb(data)
+		{
+			//console.log(data);
 			$state.go('main.list.duty.list');
 		}
 		function errorcb()

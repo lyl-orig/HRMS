@@ -17,4 +17,22 @@
     <select id="getAlldDutys" parameterType="String" resultMap="DutyMap">
     	select * from duty
     </select>
+    <select id="getDutyById" resultMap="DutyMap">
+       select * from duty where EId = #{EId}
+    </select>
+    
+    <update id="updateDuty" parameterType="com.cqut.entity.Duty">
+        update duty
+        <set>
+            name=#{name},code=#{code}
+        </set>
+        where EId=#{EId}
+    </update>
+    
+    <delete id="deleteDuty"  parameterType="com.cqut.entity.Duty">
+    	delete from duty where EId = #{EId}
+    </delete>
+    <select id="getDutyByName"  resultMap="DutyMap">
+    	select * from duty where name like "%"#{name}"%"
+    </select>
 </mapper>

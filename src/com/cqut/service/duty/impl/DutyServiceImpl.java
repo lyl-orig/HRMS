@@ -31,4 +31,32 @@ public class DutyServiceImpl implements DutyService {
 		return dutyDao.getAlldDutys(where);
 	}
 
+	@Transactional
+	@Override
+	public Duty getDutyById(int EId) {
+		// TODO Auto-generated method stub
+		return dutyDao.getDutyById(EId);
+	}
+
+	@Transactional
+	@Override
+	public int updateDuty(Duty duty) {
+		// TODO Auto-generated method stub
+		return dutyDao.updateDuty(duty);
+	}
+
+	@Transactional
+	@Override
+	public int deleteDuty(int EId) {
+		// TODO Auto-generated method stub
+		return dutyDao.deleteDuty(EId);
+	}
+
+	@Transactional
+	@Override
+	public List<Duty> getDutyByName(String name) {
+		// TODO Auto-generated method stub
+		return dutyDao.getDutyByName(name);
+	}
+
 }

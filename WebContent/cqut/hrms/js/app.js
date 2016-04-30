@@ -285,7 +285,6 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 	  }))
   .state('main.list.post.list',angularAMD.route({
 		url : '/list',
-		css:[],
 		views : {
 			"content@main":angularAMD.route({
 				templateUrl : 'view/post/html/PostList.html',
@@ -297,7 +296,6 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 	  }))
   .state('main.list.post.form',angularAMD.route({
 	url : '/form/:operate/:postId',
-	css:[],
 	views : {
 		"content@main":angularAMD.route({
 			templateUrl : 'view/post/html/PostForm.html',
@@ -308,7 +306,6 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
   }))
    .state('main.list.post.display',angularAMD.route({
 	url : '/display/:postId',
-	css:[],
 	views : {
 		"content@main":angularAMD.route({
 			templateUrl : 'view/post/html/PostDisplay.html',
@@ -348,6 +345,17 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 		"content@main":angularAMD.route({
 			templateUrl : 'view/duty/html/DutyForm.html',
 			controllerUrl : ['view/duty/js/DutyForm.js',
+			                 'view/duty/js/DutyService.js']
+		})
+	}
+  }))
+  .state('main.list.duty.display',angularAMD.route({
+	url : '/display/:dutyId',
+	css:[],
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/duty/html/DutyDisplay.html',
+			controllerUrl : ['view/duty/js/DutyDisplay.js',
 			                 'view/duty/js/DutyService.js']
 		})
 	}
