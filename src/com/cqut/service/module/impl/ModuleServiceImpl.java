@@ -23,17 +23,18 @@ public class ModuleServiceImpl implements ModuleService{
 		
 		return moduleDao.insertModule(module);
 	}
+	
 	@Transactional
 	@Override
 	public int updateModule(Module module) {
 		
-		return 0;
+		return moduleDao.updateModule(module);
 	}
 	@Transactional
 	@Override
-	public int deleteModule(Module module) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteModule(int moduleId) {
+		
+		return moduleDao.deleteModule(moduleId);
 	}
 	
 	@Transactional
@@ -41,6 +42,20 @@ public class ModuleServiceImpl implements ModuleService{
 	public List<Module> getModules(String where) {
 		
 		return moduleDao.getModules("");
+	}
+	
+	@Transactional
+	@Override
+	public Module getModuleById(int moduleId) {
+		
+		return moduleDao.getModuleById(moduleId);
+	}
+
+	@Transactional
+	@Override
+	public List<Module> searchModuleByName(String name) {
+		
+		return moduleDao.searchModuleByName(name);
 	}
 
 }

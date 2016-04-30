@@ -12,7 +12,11 @@ public interface ModuleDao {
 	
 	public int updateModule(Module module);
 	
-	public int deleteModule(Module module);
+	public int deleteModule(@Param("EId") int EId);
 	
 	public List<Module> getModules(@Param("where")String where);
+	
+	public Module getModuleById(@Param("EId") int EId);
+	
+	public List<Module> searchModuleByName(@Param("name") String name);
 }

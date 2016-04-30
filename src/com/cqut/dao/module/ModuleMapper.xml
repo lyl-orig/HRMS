@@ -33,4 +33,16 @@
             and ${where}
         </if>
     </select>
+     <select id="getModuleById"  resultMap="ModuleMap">
+     	select * from module
+        <where>
+            EId=#{EId}
+        </where>
+    </select>
+    <select id="searchModuleByName" resultMap="ModuleMap">
+    	select * from module
+    	<where>
+            name like "%"#{name}"%"
+        </where>
+    </select>
 </mapper>

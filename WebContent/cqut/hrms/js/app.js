@@ -38,14 +38,12 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 				               ]//必需是数组
 			}),
 			"menu@main" : angularAMD.route({
-				controller:'HeaderController',
 				templateUrl : 'view/main/html/Menu.html',
-				controllerUrl:['view/main/js/HeaderController.js',
-				               'view/module/js/ModuleService.js',
-				               'view/node/js/NodeService.js'
+				controllerUrl:[
 				               ]//必需是数组
 			}),
 			"content@main":angularAMD.route({
+				css:['common/common.css'],
 				templateUrl : 'view/main/html/Content.html',
 				controllerUrl:[ ]//必需是数组
 			})
@@ -169,7 +167,9 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 				url : '/module',
 				views : {
 					"content@main":angularAMD.route({
-						templateUrl : 'view/module/html/ModuleList.html'
+						templateUrl : 'view/module/html/ModuleList.html',
+						controllerUrl : ['view/module/js/ModuleList.js',
+						                 'view/module/js/ModuleService.js']
 					})
 				}
 			  }))
@@ -185,12 +185,23 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 				}
 			  }))
 		  .state('main.list.module.form',angularAMD.route({
-			url : '/form/:operate',
+			url : '/form/:operate/:moduleId',
 			css:[],
 			views : {
 				"content@main":angularAMD.route({
 					templateUrl : 'view/module/html/ModuleForm.html',
 					controllerUrl : ['view/module/js/ModuleForm.js',
+					                 'view/module/js/ModuleService.js']
+				})
+			}
+		  }))
+		   .state('main.list.module.display',angularAMD.route({
+			url : '/display/:moduleId',
+			css:[],
+			views : {
+				"content@main":angularAMD.route({
+					templateUrl : 'view/module/html/ModuleDisplay.html',
+					controllerUrl : ['view/module/js/ModuleDisplay.js',
 					                 'view/module/js/ModuleService.js']
 				})
 			}

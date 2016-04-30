@@ -1,35 +1,31 @@
 angular.module('moduleModule', [])
 .controller('moduleListController',['$rootScope','$scope','$state','$stateParams','ModuleService',
 function($rootScope,$scope,$state,$stateParams,ModuleService){
+	//$scope.modules='';
 	
-	 ModuleService.getModules(sucesscb,errorcb);
+	ModuleService.getModules(sucesscb,errorcb);
 	 function sucesscb(data)
 	 {
-		 console.log(data);
 		 $scope.modules=data;
 	 }
 	 function errorcb(){
 		 alert("系统列表加载失败");
 	 }
-	/*$scope.loadGrid=function(){
-		
-		 ModuleService.getModules(sucesscb,sucesscb);
-		 
+	//刷新表格
+	$scope.refreshGrid = function(){
+		ModuleService.getModules(sucesscb,errorcb);
 		 function sucesscb(data)
-			{
-			    //alert(data);
-			    $scope.modules=data;
-			    
-				console.log($scope.modules);
-			}
-			function errorcb()
-			{
-				alert('获取机构列表失败!');
-			}		
-	}
+		 {
+			 $scope.modules=data;
+			 $scope.name='';
+		 }
+		 function errorcb(){
+			 alert("系统列表加载失败");
+		 }
 
-	$scope.loadGrid();*/
-	$scope.gridOptions = {
+	}
+	 $scope.refreshGrid(); 
+	 $scope.gridOptions = {
 			data:'modules',
 			rowTemplate: '<div style="height: 100%"><div ng-style="{ \'cursor\': row.cursor }" ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' +
 			'<div class="ngVerticalBar" ng-style="{height: rowHeight}" ng-class="{ ngVerticalBarVisible: !$last }"> </div>' +
@@ -41,6 +37,7 @@ function($rootScope,$scope,$state,$stateParams,ModuleService){
 			enableCellEdit: true,
 			enablePinning: true,
 			showSelectionCheckbox:true,
+			selectedItems:[],
 			columnDefs:[
 			  {
 				 field : 'EId',
@@ -66,9 +63,9 @@ function($rootScope,$scope,$state,$stateParams,ModuleService){
 				  enableCellEdit: false,
 				  sortable: false,
 				  pinnable: false,
-				  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updateModule({id:row.getProperty(col.field)})">修改</a>'+
-				  '&nbsp;&nbsp<a ng-click="displayModule({id:row.getProperty(col.field)})" >查看</a>'+
-				  '&nbsp;&nbsp<a ng-click="deleteModule({id:row.getProperty(col.field)})" >删除</a></div>'
+				  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updateModule(row.getProperty(col.field))">修改</a>'+
+				  '&nbsp;&nbsp<a ng-click="displayModule(row.getProperty(col.field))" >查看</a>'+
+				  '&nbsp;&nbsp<a ng-click="deleteModule(row.getProperty(col.field))" >删除</a></div>'
 			         	
 			  }],
 			    enablePaging: true,
@@ -82,7 +79,38 @@ function($rootScope,$scope,$state,$stateParams,ModuleService){
 		      i18n:'zh-cn'
 		};
 	
-	//$scope.loadGrid();
+	$scope.updateModule=function(moduleId){
+		
+		$state.go('main.list.module.form',{operate:'edit',moduleId:moduleId});
+	}
+	
+    $scope.displayModule=function(moduleId){
+    	
+    	$state.go('main.list.module.display',{moduleId:moduleId});
+    }
+    
+    $scope.deleteModule=function(moduleId){
+    	
+    	ModuleService.deleteModule(moduleId,sucesscb,errorcb);
+    	
+    	function sucesscb(data){
+    		
+    		$scope.refreshGrid();
+    	}
+    	function errorcb(){
+    		alert("删除失败");
+    	}
+    	
+    }
+    $scope.deleteModules=function(){
+    	var modules =$scope.gridOptions.selectedItems;
+    	for(var i=0;i<modules.length;i++)
+    	{
+    		$scope.deleteModule(modules[i].EId);
+    	}
+    	
+    }
+   
 	
 	$scope.insertModule = function()
   	{
@@ -90,16 +118,21 @@ function($rootScope,$scope,$state,$stateParams,ModuleService){
   	}
 	
 	//通过名称查找组织结构
-	$scope.searchOrgaByName=function(){
+	$scope.searchModuleByName=function(){
 		var name = $scope.name;
 		if($scope.name){
-			//ModuleService.searchModuleByName(name);
+			ModuleService.searchModuleByName(name,sucesscb,errorcb);
+	    	
+	    	function sucesscb(data){
+	    		console.log(JSON.parse(data.modules));
+	    		$scope.modules=JSON.parse(data.modules);
+	    	}
+	    	function errorcb(){
+	    		alert("删除失败");
+	    	}
 		}
 	}
-	//刷新表格
-	$scope.refreshGrid = function(){
-		alert('刷新表格');
-	}
+	
 }]);
 
 

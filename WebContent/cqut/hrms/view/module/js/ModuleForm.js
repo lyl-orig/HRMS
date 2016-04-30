@@ -5,6 +5,27 @@ function($rootScope,$scope,ModuleService,$state,$stateParams){
 	$scope.showSaveAndAddButton = $stateParams.operate == 'add' ?true:false;
 	
 	$scope.operate = $stateParams.operate;
+	$scope.moduleId = $stateParams.moduleId;
+	
+	$scope.getModuleData=function(){
+		if($scope.operate=='edit'){
+			$scope.getModuleDetail();
+		}
+	}
+	$scope.getModuleDetail=function(){
+		
+		ModuleService.getModuleById($scope.moduleId,sucesscb,errorcb);
+
+		function sucesscb(data)
+		{
+			$scope.module =data;
+		};
+
+		function errorcb(data)
+		{
+			alert('加载失败');
+		};
+	}
 	
 	$scope.saveModule = function(module){
 	
@@ -14,6 +35,7 @@ function($rootScope,$scope,ModuleService,$state,$stateParams){
 		}
 		else if($scope.operate=='edit')
 		{
+			
 			$scope.updateModule(module);
 		}
 	}
@@ -21,6 +43,7 @@ function($rootScope,$scope,ModuleService,$state,$stateParams){
 	
 	$scope.addModule = function(module)
 	{   
+		
 		ModuleService.insertModule(module,sucesscb,errorcb);
 
 		function sucesscb(data)
@@ -34,6 +57,22 @@ function($rootScope,$scope,ModuleService,$state,$stateParams){
 		function errorcb()
 		{
 			alert('添加失败!');
+		}
+	}
+	$scope.updateModule=function(module){
+		//alert($scope.module.EId);
+		ModuleService.updateModule(module,sucesscb,errorcb);
+		function sucesscb(data)
+		{
+			if(data.update){
+				$state.go('main.list.module.list');
+			}else{
+				alert('保存失败');
+			}	
+		}
+		function errorcb()
+		{
+			alert('保存失败!');
 		}
 	}
 	

@@ -1,0 +1,27 @@
+<div ng-controller="moduleDisplayController">
+<ddataload show="propertiesLoad"></ddataload>
+<ddataload show="propertiesValueLoad"></ddataload>
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="col-md-12 form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-offset-1 col-md-10">
+					<input class="btn btn-info col-md-1" value="返回"
+						ng-click="returnList()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="realName">系统模块: </label>
+				<div class="col-md-9">
+					<span class="form-control">{{module.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="code"> 备注: </label>
+				<div class="col-md-9">
+					<span class="form-control">{{module.remark}}</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

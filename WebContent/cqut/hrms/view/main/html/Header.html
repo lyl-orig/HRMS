@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-	            <ul id="systemModules" class="nav navbar-nav pull-left"> 
+	            <ul id="systemModules" class="nav navbar-nav pull-left" ng-init="load(1)"> 
 	           	   <li ng-repeat="module in modules" 
 	          	    	ng-class="{selectedModule:isSelected == $index}"
 	          	        ng-click="loadSystem(module.EId,$index)">

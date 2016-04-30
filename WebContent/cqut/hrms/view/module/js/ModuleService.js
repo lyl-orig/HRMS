@@ -14,9 +14,9 @@ moduleApp.factory('ModuleService',['$resource',function($resource){
 		moduleService.save({action:'updateModule'},module,sucesscb,errorcb);
 	}
 	
-	moduleService.deleteModule = function(module,sucesscb,errorcb){
+	moduleService.deleteModule = function(moduleId,sucesscb,errorcb){
 		
-		moduleService.save({action:'deleteModule'},module,sucesscb,errorcb);
+		moduleService.save({action:'deleteModule'},moduleId,sucesscb,errorcb);
 	}
 	
 	moduleService.getModules = function(sucesscb,errorcb){
@@ -24,5 +24,13 @@ moduleApp.factory('ModuleService',['$resource',function($resource){
 		moduleService.query({action:'getModules'},sucesscb,errorcb);
 	}
 	
+	moduleService.getModuleById=function(EId,sucesscb,errorcb){
+		
+		moduleService.save({action:'getModuleById'},EId,sucesscb,errorcb);
+	}
+	moduleService.searchModuleByName=function(name,sucesscb,errorcb){
+		
+		moduleService.save({action:'searchModuleByName'},name,sucesscb,errorcb);
+	}
 	return moduleService;
 }]);

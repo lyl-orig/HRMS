@@ -2,3 +2,6 @@
 /applicationContext.xml
 /c3p0-config.xml
 /com/
+/logback.xml
+/mybatis-config.xml
+/spring-mvc.xml

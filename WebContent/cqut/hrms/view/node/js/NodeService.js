@@ -30,7 +30,7 @@ nodeApp.factory('NodeService',['$resource',function($resource){
 	
 	nodeService.getNodesByModuleId=function(moduleId,sucesscb,errorcb){
 		
-		nodeService.query({action:'getNodesByModuleId'},{moduleId:moduleId},sucesscb,errorcb)
+		nodeService.save({action:'getNodesByModuleId'},{moduleId:moduleId},sucesscb,errorcb)
 	}
 	return nodeService;
 }]);

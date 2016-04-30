@@ -43,3 +43,7 @@
 	height: 60px;
 	line-height: 60px;	
 }
+.content{
+	background-color: red;
+	height: 300px;
+}

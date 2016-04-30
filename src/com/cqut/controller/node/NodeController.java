@@ -70,12 +70,15 @@ public class NodeController {
 	@ResponseBody
 	public String getNodesByModuleId(@RequestBody Node node){
 		
+		System.out.println(node.getModuleId());
 		List<Node> nodes = nodeService.getNodesByModuleId(node.getModuleId());
+		Map<String,Object> jsonObject = Maps.newHashMap();
 		
 		JSONArray jsonArray = JSONArray.fromObject(nodes);
-
+		jsonObject.put("nodes", jsonArray.toString());
+		
 		System.out.println(jsonArray.toString());
 		
-		return jsonArray.toString();
+		return JSON.toJsonString(jsonObject);
 	}
 }
