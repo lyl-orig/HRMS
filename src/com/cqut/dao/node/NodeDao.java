@@ -10,7 +10,7 @@ public interface NodeDao {
 
 	public int insertNode(Node node);
 	
-	public int deleteNode(Node node);
+	public int deleteNode(@Param("EId") int EId);
 	
 	public int updateNode(Node node);
 	
@@ -20,7 +20,7 @@ public interface NodeDao {
 	
 	public List<Node> getNodesByName(@Param("name") String name);
 	
-	public Node getNodeByNameAndId(@Param("name") String name,@Param("moduleId") int moduleId);
+	public List<Node> getNodesByModuleIdAndName(@Param("moduleId") int moduleId,@Param("name") String name);
 	
 	public Node getNodeById(@Param("EId") int EId);
 }

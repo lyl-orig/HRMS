@@ -8,24 +8,37 @@ angular.module('nodeModule', [])
 	 function sucesscb(data)
 	 {
 		 $scope.module=data;
+		 //获取全部功能点
+		 NodeService.getNodes(sucesscb,errorcb);
+		 function sucesscb(data)
+		 {
+			 $scope.nodes=data;
+		 }
+		 function errorcb(){
+			 alert("系统列表加载失败");
+		 }
 	 }
-	 function errorcb(){
-		 alert("系统列表加载失败");
-	 }
+		  function errorcb(){
+			 alert("系统列表加载失败");
+		  }
+	   $scope.refreshGrid=function(){
+	    	 NodeService.getNodes(sucesscb,errorcb);
+			 function sucesscb(data)
+			 {
+				 $scope.nodes=data;
+				 $scope.name='';
+				 $scope.node.moduleId='';
+			 }
+			 function errorcb(){
+				 alert("系统列表加载失败");
+			 }
+	    }
 	 
 	 $scope.selectItem=function(){
 			//alert($scope.module.EId);
 	 }
          
-		 //获取全部功能点
-	 NodeService.getNodes(sucesscb,errorcb);
-	 function sucesscb(data)
-	 {
-		 $scope.nodes=data;
-	 }
-	 function errorcb(){
-		 alert("系统列表加载失败");
-	 }
+		
 	 $scope.gridOptions = {
 				data:'nodes',
 				rowTemplate: '<div style="height: 100%"><div ng-style="{ \'cursor\': row.cursor }" ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' +
@@ -38,6 +51,7 @@ angular.module('nodeModule', [])
 				enableCellEdit: true,
 				enablePinning: true,
 				showSelectionCheckbox:true,
+				selectedItems:[],
 				columnDefs:[
 				  {
 					 field : 'EId',
@@ -70,8 +84,8 @@ angular.module('nodeModule', [])
 					  sortable: false,
 					  pinnable: false,
 					  cellTemplate:  '<div>&nbsp;&nbsp<a ng-click="updateNode(row.getProperty(col.field))">修改</a>'+
-					  '&nbsp;&nbsp<a ng-click="displayNode({EId:row.getProperty(col.field)})" >查看</a>'+
-						'&nbsp;&nbsp<a ng-click="deleteNode({EId:row.getProperty(col.field)})" >删除</a></div>'		  
+					  '&nbsp;&nbsp<a ng-click="displayNode(row.getProperty(col.field))" >查看</a>'+
+						'&nbsp;&nbsp<a ng-click="deleteNode(row.getProperty(col.field))" >删除</a></div>'		  
 				         	
 				  }],
 				    enablePaging: true,
@@ -89,8 +103,66 @@ angular.module('nodeModule', [])
 			
 			$state.go('main.list.node.form',{operate:'edit',nodeId:nodeId});
 		}
+		
+		$scope.displayNode=function(nodeId){
+			
+			$state.go('main.list.node.display',{nodeId:nodeId});
+		}
+		
+		$scope.deleteNode=function(nodeId){
+			NodeService.deleteNode(nodeId,sucesscb,errorcb);
+			function sucesscb(data){
+				$scope.refreshGrid();
+			}
+			function errorcb (){
+				
+			}
+		}
+		$scope.deleteNodes=function(){
+			
+			var nodes =$scope.gridOptions.selectedItems;
+	    	for(var i=0;i<nodes.length;i++)
+	    	{
+	    		$scope.deleteNode(nodes[i].EId);
+	    	}
+		}
 	    //新增部门
 	    $scope.insertNode = function(){	   
 	    	$state.go('main.list.node.form',{operate:'add'});
 	    }
+	    
+	    $scope.searchNode = function(){
+	    	
+	    	if($scope.node.moduleId && $scope.name){
+	    		NodeService.getNodesByModuleIdAndName($scope.node.moduleId,$scope.name,sucesscb,errorcb);
+	    		function sucesscb(data){
+	    			$scope.nodes=JSON.parse(data.nodes);
+				}
+				function errorcb (){
+					
+				}
+	    	}else if($scope.node.moduleId){
+	    		NodeService.getNodesByModuleId($scope.node.moduleId,sucesscb,errorcb);
+	    		
+	    		function sucesscb(data){
+	    			$scope.nodes=JSON.parse(data.nodes);
+				
+				}
+				function errorcb (){
+					alert("加载失败");
+				}
+	    	}else if($scope.name){
+	    		NodeService.getNodesByName($scope.name,sucesscb,errorcb);
+	    		
+	    		function sucesscb(data){
+	    			$scope.nodes=JSON.parse(data.nodes);
+				}
+				function errorcb (){
+					alert("加载失败");
+				}
+	    	}else{
+	    		$scope.refreshGrid();
+	    	}
+	    }
+	 
 }]);

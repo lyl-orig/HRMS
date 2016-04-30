@@ -32,5 +32,6 @@ moduleApp.factory('ModuleService',['$resource',function($resource){
 		
 		moduleService.save({action:'searchModuleByName'},name,sucesscb,errorcb);
 	}
+	
 	return moduleService;
 }]);

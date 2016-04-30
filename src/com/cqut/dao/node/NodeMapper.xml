@@ -44,4 +44,14 @@
            moduleId=#{moduleId}
         </where>
     </select>
+     <select id="getNodesByModuleIdAndName" resultMap="NodeMap">
+   		  select * from node 
+        <where>
+           moduleId=#{moduleId} and name like "%"#{name}"%"
+        </where>
+    </select>
+   
+     <select id="getNodesByName" resultMap="NodeMap">
+   		  select * from node where name like "%"#{name}"%"
+    </select>
 </mapper>

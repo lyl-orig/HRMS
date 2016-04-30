@@ -25,9 +25,9 @@ public class NodeServiceImpl implements NodeService{
 
 	@Transactional
 	@Override
-	public int deleteNode(Node node) {
+	public int deleteNode(int nodeId) {
 		
-		return nodeDao.deleteNode(node);
+		return nodeDao.deleteNode(nodeId);
 	}
 
 	@Transactional
@@ -55,6 +55,20 @@ public class NodeServiceImpl implements NodeService{
 	public List<Node> getNodesByModuleId(int moduleId) {
 		
 		return nodeDao.getNodesByModuleId(moduleId);
+	}
+	
+	@Transactional
+	@Override
+	public List<Node> getNodesByModuleIdAndName(int moduleId, String name) {
+		
+		return nodeDao.getNodesByModuleIdAndName(moduleId, name);
+	}
+
+	@Transactional
+	@Override
+	public List<Node> getNodesName(String name) {
+		
+		return nodeDao.getNodesByName(name);
 	}
 
 }

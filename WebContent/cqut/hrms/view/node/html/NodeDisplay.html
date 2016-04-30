@@ -1,0 +1,40 @@
+<div ng-controller="nodeDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="col-md-12 form-horizontal" name="nodeForm" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-offset-1 col-md-10">
+					<input class="btn btn-info col-md-1" value="返回"
+						ng-click="returnList()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="realName"> 功能点名称: </label>
+				<div class="col-md-9">
+					<span class="form-control">{{node.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="url"> 路径: </label>
+				<div class="col-md-9">
+					<span class="form-control">{{node.mapurl}}</span>
+				</div>
+			</div>
+			<!-- <div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="moduleId"> 所属模块: </label>
+				<div class="col-md-9">
+				    <select class="form-control" ng-model="node.moduleId"  ng-options="m.EId as m.name for m in module" ng-change="selectItem()">
+				    	<option value="">--- 请选择模块 ---</option>
+				    </select>
+				</div>
+			</div> -->
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="remark"> 备注: </label>
+				<div class="col-md-9">
+						<span class="form-control">{{node.remark}}</span>
+				</div>
+			</div>
+		</div>
+	 </form>
+	</div>
+</div>

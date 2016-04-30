@@ -8,7 +8,7 @@ public interface NodeService {
 	
 	public int insertNode(Node node);
 
-	public int deleteNode(Node node);
+	public int deleteNode(int nodeId);
 	
 	public int updateNode(Node node);
 	
@@ -17,4 +17,8 @@ public interface NodeService {
 	public Node getNodeById(int EId);
 	
 	public List<Node> getNodesByModuleId(int moduleId);
+	
+	public List<Node> getNodesByModuleIdAndName(int moduleId,String name);
+	
+	public List<Node> getNodesName(String name);
 }

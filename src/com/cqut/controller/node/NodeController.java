@@ -43,6 +43,36 @@ public class NodeController {
 		return JSON.toJsonString(jsonObject);
 	}
 	
+	@RequestMapping(value="updateNode")
+	@ResponseBody
+	public String updateNode(@RequestBody Node node){
+		Map<String,Object> jsonObject = Maps.newHashMap();
+		int result=nodeService.updateNode(node);
+		if(result==0){
+			jsonObject.put("update", false);
+		}else{
+			jsonObject.put("update", true);
+		}
+	
+		return JSON.toJsonString(jsonObject);
+	}
+	
+	@RequestMapping(value="deleteNode")
+	@ResponseBody
+	public String deleteNode(@RequestBody int nodeId){
+		
+		Map<String,Object> jsonObject = Maps.newHashMap();
+		int result=nodeService.deleteNode(nodeId);
+		
+		if(result==0){
+			jsonObject.put("delete", false);
+		}else{
+			jsonObject.put("delete", true);
+		}
+	
+		return JSON.toJsonString(jsonObject);
+	}
+	
 	@RequestMapping(value="getNodes")
 	@ResponseBody
 	public String getNodes(){
@@ -58,9 +88,9 @@ public class NodeController {
 	
 	@RequestMapping(value="getNodeById")
 	@ResponseBody
-	public String getNodeById(@RequestBody Node node){
+	public String getNodeById(@RequestBody int id){
 		
-		Node result =nodeService.getNodeById(node.getEId());
+		Node result =nodeService.getNodeById(id);
 		JSONObject jsonObject =JSONObject.fromObject(result);
 		System.out.println(jsonObject.toString());		
 		return jsonObject.toString();
@@ -70,8 +100,37 @@ public class NodeController {
 	@ResponseBody
 	public String getNodesByModuleId(@RequestBody Node node){
 		
-		System.out.println(node.getModuleId());
+		//System.out.println(node.getModuleId());
 		List<Node> nodes = nodeService.getNodesByModuleId(node.getModuleId());
+		Map<String,Object> jsonObject = Maps.newHashMap();
+		
+		JSONArray jsonArray = JSONArray.fromObject(nodes);
+		jsonObject.put("nodes", jsonArray.toString());
+		
+		System.out.println(jsonArray.toString());
+		
+		return JSON.toJsonString(jsonObject);
+	}
+	@RequestMapping(value="getNodesByModuleIdAndName")
+	@ResponseBody
+	public String getNodesByModuleIdAndName(@RequestBody Node node){
+		
+		List<Node> nodes = nodeService.getNodesByModuleIdAndName(node.getModuleId(),node.getName());
+		Map<String,Object> jsonObject = Maps.newHashMap();
+		
+		JSONArray jsonArray = JSONArray.fromObject(nodes);
+		jsonObject.put("nodes", jsonArray.toString());
+		
+		System.out.println(jsonArray.toString());
+		
+		return JSON.toJsonString(jsonObject);
+	}
+
+	@RequestMapping(value="getNodesByName")
+	@ResponseBody
+	public String getNodesByName(@RequestBody Node node){
+		
+		List<Node> nodes = nodeService.getNodesName(node.getName());
 		Map<String,Object> jsonObject = Maps.newHashMap();
 		
 		JSONArray jsonArray = JSONArray.fromObject(nodes);

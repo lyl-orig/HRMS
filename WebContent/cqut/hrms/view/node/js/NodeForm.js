@@ -30,7 +30,7 @@ angular.module('nodeModule', [])
 		function sucesscb(data)
 		{
 			$scope.node=data;
-			console.log(data);
+			//console.log(data);
 		}
 		function errorcb()
 		{
@@ -66,7 +66,20 @@ angular.module('nodeModule', [])
 	}
 	$scope.updateNode=function(node)
 	{
-		alert("node");
+		NodeService.updateNode(node,sucesscb,errorcb);
+		function sucesscb(data)
+		{
+			if(data.insert==true){
+				$state.go('main.list.node.list');
+			}else{
+				alert('添加失败!');
+			}
+			
+		}
+		function errorcb()
+		{
+			alert('添加失败!');
+		}
 	}
 	
 	$scope.returnList=function(){

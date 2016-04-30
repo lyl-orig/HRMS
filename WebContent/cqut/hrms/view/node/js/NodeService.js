@@ -14,9 +14,9 @@ nodeApp.factory('NodeService',['$resource',function($resource){
 		nodeService.save({action:'updateNode'},node,sucesscb,errorcb);
 	}
 	
-	nodeService.deleteNode = function(node,sucesscb,errorcb){
+	nodeService.deleteNode = function(nodeId,sucesscb,errorcb){
 		
-		nodeService.save({action:'deleteNode'},node,sucesscb,errorcb);
+		nodeService.save({action:'deleteNode'},nodeId,sucesscb,errorcb);
 	}
 	
 	nodeService.getNodes = function(sucesscb,errorcb){
@@ -25,12 +25,22 @@ nodeApp.factory('NodeService',['$resource',function($resource){
 	}
 	
 	nodeService.getNodeById=function(nodeId,sucesscb,errorcb){
-		nodeService.get({action:'getNodeById'},{nodeId:nodeId},sucesscb,errorcb)
+		nodeService.save({action:'getNodeById'},nodeId,sucesscb,errorcb)
 	}
 	
 	nodeService.getNodesByModuleId=function(moduleId,sucesscb,errorcb){
 		
 		nodeService.save({action:'getNodesByModuleId'},{moduleId:moduleId},sucesscb,errorcb)
+	}
+
+	nodeService.getNodesByModuleIdAndName=function(id,name,sucesscb,errorcb){
+		
+		nodeService.save({action:'getNodesByModuleIdAndName'},{EId:id,name:name},sucesscb,errorcb);
+	}
+
+	nodeService.getNodesByName=function(name,sucesscb,errorcb){
+		
+		nodeService.save({action:'getNodesByName'},{name:name},sucesscb,errorcb);
 	}
 	return nodeService;
 }]);

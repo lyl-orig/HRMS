@@ -237,7 +237,17 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 		})
 	}
   }))
-  
+  .state('main.list.node.display',angularAMD.route({
+	url : '/display/:nodeId',
+	css:[],
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/node/html/NodeDisplay.html',
+			controllerUrl : ['view/node/js/NodeDisplay.js',
+			                 'view/node/js/NodeService.js']
+		})
+	}
+  }))
     //	  =================================Post岗位========================
   .state('main.list.post',angularAMD.route({
 		url : '/post',
