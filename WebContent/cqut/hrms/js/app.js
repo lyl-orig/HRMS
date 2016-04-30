@@ -115,12 +115,22 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 			}
 		  }))
 	  .state('main.list.organization.form',angularAMD.route({
-		url : '/form/:operate',
+		url : '/form/:operate/:organizationId',
 		css:[],
 		views : {
 			"content@main":angularAMD.route({
 				templateUrl : 'view/organization/html/OrganizationForm.html',
 				controllerUrl : ['view/organization/js/OrganizationForm.js',
+				                 'view/organization/js/OrganizationService.js']
+			})
+		}
+	  }))
+	   .state('main.list.organization.display',angularAMD.route({
+		url : '/display/:organizationId',
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/organization/html/OrganizationDisplay.html',
+				controllerUrl : ['view/organization/js/OrganizationDisplay.js',
 				                 'view/organization/js/OrganizationService.js']
 			})
 		}

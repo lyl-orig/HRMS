@@ -10,4 +10,11 @@ public interface OrganizationService {
 	
 	public List<Organization> getOrganizations(String where);
 	
+	public Organization getOrganizationById(int id);
+	
+	public List<Organization> getOrganizationByName(String name);
+	
+	public int deleteOrganization(int EId);
+	
+	public int updateOrganization(Organization organization);
 }

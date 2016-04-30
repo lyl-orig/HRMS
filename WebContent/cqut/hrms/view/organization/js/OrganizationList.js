@@ -24,6 +24,7 @@ function($rootScope,$scope,$state,$stateParams,OrganizationService){
 			enableCellEdit: true,
 			enablePinning: true,
 			showSelectionCheckbox:true,
+			selectedItems:[],
 			columnDefs:[
 			  {
 				 field : 'EId',
@@ -49,9 +50,9 @@ function($rootScope,$scope,$state,$stateParams,OrganizationService){
 				  enableCellEdit: false,
 				  sortable: false,
 				  pinnable: false,
-				  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updateOrganization({id:row.getProperty(col.field)})">修改</a>'+
-				  '&nbsp;&nbsp<a ng-click="displayOrganization({id:row.getProperty(col.field)})" >查看</a>'+
-				  '&nbsp;&nbsp<a ng-click="deleteOrganization({id:row.getProperty(col.field)})" >删除</a></div>'
+				  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updateOrganization(row.getProperty(col.field))">修改</a>'+
+				  '&nbsp;&nbsp<a ng-click="displayOrganization(row.getProperty(col.field))" >查看</a>'+
+				  '&nbsp;&nbsp<a ng-click="deleteOrganization(row.getProperty(col.field))" >删除</a></div>'
 			         	
 			  }],
 			    enablePaging: true,
@@ -70,16 +71,62 @@ function($rootScope,$scope,$state,$stateParams,OrganizationService){
   		$state.go('main.list.organization.form',{operate:'add'});
   	}
 	
+	$scope.displayOrganization=function(organizationId){
+		
+		$state.go('main.list.organization.display',{organizationId:organizationId});
+	}
+	
+	$scope.updateOrganization=function(organizationId){
+		
+		$state.go('main.list.organization.form',{operate:'edit',organizationId:organizationId});
+	}
+	$scope.deleteOrganization=function(organizationId){
+		//alert(organizationId);
+		OrganizationService.deleteOrganization(organizationId,sucesscb,errorcb);
+		function sucesscb(data)
+		{
+			$scope.refreshGrid();
+		}
+		function errorcb()
+		{
+			alert('失败!');
+		}	
+	}
+	$scope.deleteOrganizations=function(){
+		
+		var orgs =$scope.gridOptions.selectedItems;
+    	for(var i=0;i<orgs.length;i++)
+    	{
+    		$scope.deleteOrganization(orgs[i].EId);
+    	}
+	}
 	//通过名称查找组织结构
-	$scope.searchOrgaByName=function(){
+	$scope.searchByName=function(){
 		var name = $scope.name;
 		if($scope.name){
-			OrganizationService.searchOrgaByName(name);
+			OrganizationService.getOrganizationByName(name,sucesscb,errorcb);
+			function sucesscb(data)
+			{
+			    $scope.organizations=data;
+			}
+			function errorcb()
+			{
+				alert('获取机构列表失败!');
+			}	
 		}
 	}
 	//刷新表格
 	$scope.refreshGrid = function(){
-		alert('刷新表格');
+		OrganizationService.getOrganizations(sucesscb,errorcb);
+		 
+		 function sucesscb(data)
+			{
+			    $scope.organizations=data;
+			}
+			function errorcb()
+			{
+				alert('获取机构列表失败!');
+			}	
 	}
 }]);
 

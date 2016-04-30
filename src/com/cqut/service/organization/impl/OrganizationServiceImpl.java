@@ -31,4 +31,32 @@ public class OrganizationServiceImpl implements OrganizationService{
 		return organizationDao.getOrganizations(where);
 	}
 
+	@Transactional
+	@Override
+	public Organization getOrganizationById(int id) {
+		
+		return organizationDao.getOrganizationById(id);
+	}
+
+	@Transactional
+	@Override
+	public List<Organization> getOrganizationByName(String name) {
+		
+		return organizationDao.getOrganizationByName(name);
+	}
+
+	@Transactional
+	@Override
+	public int deleteOrganization(int EId) {
+		
+		return organizationDao.deleteOrganization(EId);
+	}
+
+	@Transactional
+	@Override
+	public int updateOrganization(Organization organization) {
+	
+		return organizationDao.updateOrganization(organization);
+	}
+
 }

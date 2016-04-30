@@ -12,9 +12,11 @@ public interface OrganizationDao {
 	
 	public int updateOrganization(Organization organization);
 	
-	public int deleteOranization(Organization organization);
+	public int deleteOrganization(@Param("EId") int EId);
 	
 	public List<Organization> getOrganizations(@Param("where") String where);
 	
-	public Organization getOrganizationbyName(@Param("name") String name);
+	public List<Organization> getOrganizationByName(@Param("name") String name);
+	
+	public Organization getOrganizationById(@Param("EId") int EId);
 }
