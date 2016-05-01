@@ -18,7 +18,16 @@ public interface EmployeeDao {
 	
 	public int updateEmployee(Employee employee);
 	
-	public List<Employee> getEmployee(@Param("where") String where);
+	public List<Employee> getEmployee();
 	
 	public Employee getEmployeeById(@Param("id") int id);
+	
+	public List<Employee> getEmployeeByPermissionId(@Param("permissionId") int permissionId);
+	
+	public List<Employee> getEmployeeByDepartmentId(@Param("departmentId") int departmentId);
+	
+	public List<Employee> getEmployeeByName(@Param("name") String name);
+	
+	public List<Employee> getEmployeeByDepartmentIdAndName(@Param("departmentId") int departmentId,@Param("name") String name);
+	
 }

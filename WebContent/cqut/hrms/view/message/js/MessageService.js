@@ -12,5 +12,10 @@ messageApp.factory('MessageService',['$resource',function($resource){
 		messageService.query({action:'getAllMessages'},sucesscb,errorcb);
 	}
 	
+	messageService.getMessageById =function(id,sucesscb,errorcb){
+		
+		messageService.save({action:'getMessageById'},id,sucesscb,errorcb);
+	}
+	
 	return messageService;
 }]);

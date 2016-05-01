@@ -1,6 +1,8 @@
 package com.cqut.service.employee.impl;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +24,42 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public int insertEmployee(Employee employee) {
 		
 		return employeeDao.insertEmployee(employee);
+	}
+
+	@Transactional
+	@Override
+	public List<Employee> getEmployeeByPermissionId(int permissionId) {
+		// TODO Auto-generated method stub
+		return employeeDao.getEmployeeByPermissionId(permissionId);
+	}
+
+	@Transactional
+	@Override
+	public List<Employee> getEmployeeByDepartmentId(int departmentId) {
+		// TODO Auto-generated method stub
+		return employeeDao.getEmployeeByDepartmentId(departmentId);
+	}
+
+	@Transactional
+	@Override
+	public List<Employee> getEmployeeByName(String name) {
+		// TODO Auto-generated method stub
+		return employeeDao.getEmployeeByName(name);
+	}
+
+	@Transactional
+	@Override
+	public List<Employee> getEmployeeByDepartmentIdAndName(int departmentId,
+			String name) {
+		// TODO Auto-generated method stub
+		return employeeDao.getEmployeeByDepartmentIdAndName(departmentId, name);
+	}
+
+	@Transactional
+	@Override
+	public List<Employee> getEmployee() {
+		// TODO Auto-generated method stub
+		return employeeDao.getEmployee();
 	}
 
 }

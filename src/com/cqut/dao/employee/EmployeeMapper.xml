@@ -16,4 +16,23 @@
         values(#{name},#{password})  
 	</insert>
    
+    <select id="getEmployeeByPermissionId" resultMap="EmployeeMap">
+    	select * from employee where permissionId = #{permissionId}
+    </select>
+    
+    <select id="getEmployeeByDepartmentId" resultMap="EmployeeMap">
+  		  select * from employee where departmentId = #{departmentId}
+    </select>
+    
+    <select id="getEmployeeByName" resultMap="EmployeeMap">
+  		  select * from employee where name like  "%"#{name}"%"
+    </select>
+    
+    <select id="getEmployeeByDepartmentIdAndName" resultMap="EmployeeMap">
+  		  select * from employee where departmentId = #{departmentId} and name like  "%"#{name}"%"
+    </select>
+    
+    <select id="getEmployee" resultMap="EmployeeMap">
+   		 select * from employee 
+    </select>
 </mapper>

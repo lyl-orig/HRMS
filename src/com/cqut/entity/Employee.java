@@ -43,12 +43,20 @@ public class Employee {
 //	原厂
 	private String originalFactory;
 //	员工等级 1 普通员工 2 领导 3 子公司管理人事管理人员 4 系统管理员
-	private int level;
+	private int permissionId;
 	
 	private int departmentId;
 	
 	private int postId;
 	
+	public int isAssgin;
+	
+	public int getIsAssgin() {
+		return isAssgin;
+	}
+	public void setIsAssgin(int isAssgin) {
+		this.isAssgin = isAssgin;
+	}
 	private int contractId;
 	
 	private int dutyId;
@@ -62,12 +70,6 @@ public class Employee {
 	}
 	public void setEId(int eId) {
 		EId = eId;
-	}
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
 	}
 	public int getDepartmentId() {
 		return departmentId;
@@ -201,5 +203,11 @@ public class Employee {
 	}
 	public void setDutyId(int dutyId) {
 		this.dutyId = dutyId;
+	}
+	public int getPermissionId() {
+		return permissionId;
+	}
+	public void setPermissionId(int permissionId) {
+		this.permissionId = permissionId;
 	}	
 }

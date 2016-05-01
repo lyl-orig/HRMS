@@ -360,7 +360,7 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 		})
 	}
   }))
-  //	  =================================Message 职务========================
+  //	  =================================Message========================
   .state('main.list.message',angularAMD.route({
 		url : '/message',
 		views : {
@@ -374,7 +374,6 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 	  }))
   .state('main.list.message.list',angularAMD.route({
 		url : '/list',
-		css:[],
 		views : {
 			"content@main":angularAMD.route({
 				templateUrl : 'view/message/html/MessageList.html',
@@ -386,12 +385,85 @@ define(['angularAMD', 'angularUIrouter','angularResource','bootstrap',
 	  }))
   .state('main.list.message.form',angularAMD.route({
 	url : '/form/:operate/:messageId',
-	css:[],
 	views : {
 		"content@main":angularAMD.route({
 			templateUrl : 'view/message/html/MessageForm.html',
 			controllerUrl : ['view/message/js/MessageForm.js',
 			                 'view/message/js/MessageService.js']
+		})
+	}
+  }))
+   .state('main.list.message.display',angularAMD.route({
+	url : '/display/:messageId',
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/message/html/MessageDisplay.html',
+			controllerUrl : ['view/message/js/MessageDisplay.js',
+			                 'view/message/js/MessageService.js']
+		})
+	}
+  }))
+  //	  =================================Permission========================
+  .state('main.list.permission',angularAMD.route({
+		url : '/permission',
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/permission/html/PermissionList.html',
+				controllerUrl : ['view/permission/js/PermissionList.js',
+				                 'view/permission/js/PermissionService.js',
+				                ]
+			})
+		}
+	  }))
+  .state('main.list.permission.list',angularAMD.route({
+		url : '/list',
+		views : {
+			"content@main":angularAMD.route({
+				templateUrl : 'view/permission/html/PermissionList.html',
+				controllerUrl : ['view/permission/js/PermissionList.js',
+				                 'view/permission/js/PermissionService.js',
+				                 ]
+			})
+		}
+	  }))
+  .state('main.list.permission.form',angularAMD.route({
+	url : '/form/:operate/:permissionId',
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/permission/html/PermissionForm.html',
+			controllerUrl : ['view/permission/js/PermissionForm.js',
+			                 'view/permission/js/PermissionService.js']
+		})
+	}
+  }))
+   .state('main.list.permission.display',angularAMD.route({
+	url : '/display/:permissionId',
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/permission/html/PermissionDisplay.html',
+			controllerUrl : ['view/permission/js/PermissionDisplay.js',
+			                 'view/permission/js/PermissionService.js']
+		})
+	}
+  }))
+   .state('main.list.permission.employee',angularAMD.route({
+	url : '/employee/:permissionId',
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/permission/html/PermissionEmployee.html',
+			controllerUrl : ['view/permission/js/PermissionEmployee.js',
+			                 'view/employee/js/EmployeeService.js']
+		})
+	}
+  }))
+  .state('main.list.permission.assignment',angularAMD.route({
+	url : '/assignment/:permissionId',
+	views : {
+		"content@main":angularAMD.route({
+			templateUrl : 'view/permission/html/PermissionAssignment.html',
+			controllerUrl : ['view/permission/js/PermissionAssignment.js',
+			                 'view/employee/js/EmployeeService.js',
+			                 'view/department/js/DepartmentService.js']
 		})
 	}
   }))

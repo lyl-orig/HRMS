@@ -31,4 +31,11 @@ public class MessageServiceImpl implements MessageService{
 		return messageDao.getAllMessages(where);
 	}
 
+	@Transactional
+	@Override
+	public Message getMessageById(int EId) {
+		// TODO Auto-generated method stub
+		return messageDao.getMessageById(EId);
+	}
+
 }

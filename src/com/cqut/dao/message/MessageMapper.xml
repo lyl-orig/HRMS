@@ -18,4 +18,8 @@
     <select id="getAllMessages" parameterType="String" resultMap="MessageMap">
     	select * from message
     </select>
+    
+    <select id="getMessageById"  resultMap="MessageMap">
+    	select * from message where EId=#{EId}
+    </select>
 </mapper>       

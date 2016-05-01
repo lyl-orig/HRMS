@@ -54,9 +54,9 @@ angular.module('messageModule', [])
 					  enableCellEdit: false,
 					  sortable: false,
 					  pinnable: false,
-					  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updateMessage({id:row.getProperty(col.field)})">修改</a>'+
-					  '&nbsp;&nbsp<a ng-click="displayMessage({id:row.getProperty(col.field)})" >查看</a>'+
-					  '&nbsp;&nbsp<a ng-click="deleteMessage({id:row.getProperty(col.field)})" >删除</a></div>'
+					  cellTemplate: '<div>&nbsp;&nbsp<a ng-click="updateMessage(row.getProperty(col.field))">修改</a>'+
+					  '&nbsp;&nbsp<a ng-click="displayMessage(row.getProperty(col.field))" >查看</a>'+
+					  '&nbsp;&nbsp<a ng-click="deleteMessage(row.getProperty(col.field))" >删除</a></div>'
 				         	
 				  }],
 				    enablePaging: true,
@@ -70,7 +70,13 @@ angular.module('messageModule', [])
 			      i18n:'zh-cn'
 			};
 		 
-	  
+	  $scope.updateMessage=function(messageId){
+		  $state.go('main.list.message.form',{operate:'edit',messageId:messageId});
+	  }
+	  $scope.displayMessage=function(messageId){
+		  alert(messageId);
+		  $state.go('main.list.message.display',{messageId:messageId});
+	  }
 	    //新增部门
 	    $scope.insertMessage = function(){	    	
 	    	$state.go('main.list.message.form',{operate:'add'});

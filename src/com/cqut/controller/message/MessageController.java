@@ -6,12 +6,14 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cqut.entity.Duty;
 import com.cqut.entity.Message;
 import com.cqut.service.message.MessageService;
 import com.cqut.util.JSON;
@@ -48,5 +50,18 @@ public class MessageController {
 		System.out.println(jsonArray.toString());
 		
 		return jsonArray.toString();
+	}
+	
+	@RequestMapping(value="getMessageById")
+	@ResponseBody
+	public String getMessageById(@RequestBody int id){
+		
+		Message result = messageService.getMessageById(id);
+
+		JSONObject jsonObject = JSONObject.fromObject(result);  
+		
+		System.out.println(jsonObject.toString());
+		
+		return JSON.toJsonString(jsonObject);
 	}
 }

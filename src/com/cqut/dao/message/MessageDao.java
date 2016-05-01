@@ -11,5 +11,7 @@ public interface MessageDao {
 	public int insertMessage(Message message);
 	
 	public List<Message> getAllMessages(@Param("where") String where);
+	
+	public Message getMessageById(@Param("EId") int EId);
 
 }

@@ -81,7 +81,24 @@ angular.module('nodeModule', [])
 			alert('添加失败!');
 		}
 	}
-	
+	$scope.saveAndAddNode = function(node){
+		
+		NodeService.insertNode(node,sucesscb,errorcb);
+		function sucesscb(data)
+		{
+			if(data.insert==true){
+				$scope.node=''
+				$state.go('main.list.node.form',{operate:'add'});
+			}else{
+				alert('添加失败!');
+			}
+			
+		}
+		function errorcb()
+		{
+			alert('添加失败!');
+		}
+	}
 	$scope.returnList=function(){
 		$state.go('main.list.node.list');
 	}
