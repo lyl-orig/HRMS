@@ -1,0 +1,16 @@
+<div ng-controller="permissionListController">  
+    <div class="row" style="margin-top: 10px;margin-bottom: 10px">
+         <!-- <div class="col-md-3">
+         		<input type="text"  class="form-control" ng-model="name" placeholder="请输入组织机构名称"/>		
+         </div> -->
+         <div class="col-md-6">
+              <!--   <button type="button" class="btn btn-info" ng-click="searchByName()">查询</button> -->
+         		<button type="button" class="btn btn-info" ng-click="insertPermission()">新增</button>
+         		<button type="button" class="btn btn-info" ng-click="refreshGrid()">刷新</button>
+          		<button type="button" class="btn btn-info" ng-click="deletePermissions()">批量删除</button>
+         </div>
+    </div>
+    <div class="row">
+     	<div class="gridStyle" ng-grid="gridOptions" style="height: 540px"></div>
+    </div>
+</div>

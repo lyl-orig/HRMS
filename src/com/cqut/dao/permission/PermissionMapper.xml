@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
+<mapper namespace="com.cqut.dao.permission.PermissionDao">
+    <resultMap id="PermissionMap" type="com.cqut.entity.Permission">
+        <result property="EId" column="EId"/>
+        <result property="name" column="name"/>
+        <result property="level" column="level"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+	<insert id="insertPermission" parameterType="com.cqut.entity.Permission">
+		insert into permission(name,level,remark)
+        values(#{name},#{level},#{remark})  
+	</insert>
+	
+    <insert id="insertPermissionEmployee">
+    	insert into permission_employee(permissionId,employeeId)
+    	values(#{permissionId},#{employeeId})
+    </insert> 
+    
+    <update id="updatePermission"  parameterType="com.cqut.entity.Permission">
+        update permission 
+        <set>
+          	name=#{name},level=#{level},remark=#{remark}
+        </set>
+        <where>
+        	EId=#{EId}
+        </where>
+    </update>
+   
+   <delete id="deletePermission" parameterType="com.cqut.entity.Permission">
+   		delete from permission where EId=#{EId}
+   </delete>
+   
+   <select id="getAllPermissions" resultMap="PermissionMap">
+    	select * from permission 
+   </select>
+    
+    <select id="getPermissionById" resultMap="PermissionMap">
+    	select * from permission where EId=#{EId}
+    </select>
+    
+</mapper>

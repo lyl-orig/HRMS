@@ -1,0 +1,20 @@
+<div ng-controller="permissionAssignmentListController">  
+    <div class="row" style="margin-top: 10px;margin-bottom: 10px">
+   		 <div class="col-md-3">
+		    <select class="form-control" ng-model="departmentId" ng-options="o.EId as o.name for o in department">
+	    		<option value="">--- 请选择部门 ---</option>
+			</select>
+	    </div>
+         <div class="col-md-3">
+         		<input type="text" class="form-control" ng-model="name"/>		
+         </div>
+         <div class="col-md-4">
+                <button type="button" class="btn btn-info" ng-click="searchEmployee()">查询</button>
+         		<button type="button" class="btn btn-info" ng-click="refreshGrid()">刷新</button>
+         		<button type="button" class="btn btn-info" ng-click="assignmentPermissions()">全部分配</button>
+         </div>
+    </div>
+    <div class="row">
+     	<div class="gridStyle" ng-grid="gridOptions"></div>
+    </div>
+</div>

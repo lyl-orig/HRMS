@@ -1,0 +1,30 @@
+<div ng-controller="permissionDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="col-md-12 form-horizontal" >
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-primary col-md-offset-1"  type="button" value="返回"
+						ng-click="returnList()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="realName"> 权限名称: </label>
+				<div class="col-md-9">
+						<span class="form-control">{{permission.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="level"> 权限等级: </label>
+				<div class="col-md-9">
+					<span class="form-control">{{permission.level}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-3 control-label" for="remark"> 权限说明: </label>
+				<div class="col-md-9">
+					<span class="form-control">{{permission.remark}}</span>
+				</div>
+			</div>
+	</div>
+</div>
